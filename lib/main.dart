@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shatla/helper/dependencies.dart' as dep;
 import 'package:shatla/routes/route_helper.dart';
+import 'package:shatla/screens/login.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,10 +18,11 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        fontFamily: 'Roboto',
+        fontFamily: "Pacifico",
         primarySwatch: Colors.blue,
       ),
-      initialRoute: AppRouter.getOnboarding(),
+      home: LoginScreen(),
+      // initialRoute: AppRouter.getOnboarding(),
       getPages: AppRouter.routes,
     );
   }
