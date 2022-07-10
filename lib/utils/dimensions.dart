@@ -2,7 +2,7 @@
 
 import 'package:get/get.dart';
 
-//making the app responsive by calculating dimensions
+//making the app responsive by calculating dimensions for each device
 
 class Dimensions {
   static double screenHeight = Get.context!.height;
