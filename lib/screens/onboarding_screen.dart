@@ -37,22 +37,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           },
           children:const [
             OnboardingPage(
-                image: "assets/images/onboarding1.png",
+                image: "assets/images/onboarding1.jpg",
                 text:
-                    "Planting a tree is one of the easiest ways to improve the environment and beautify your surroundings.",
+                    "Recive afforestation advice about how to improve your plants",
                 textColor: AppColors.blackColor,
-                color: AppColors.bbColor),
+                color: Colors.white),
             OnboardingPage(
-                image: 'assets/images/onboarding2.png',
+                image: 'assets/images/onboarding2.jpg',
                 text:
-                    "Our app provides you with all you need to start your green journey",
+                    "Ask a question and receive help from the community",
 
                 textColor: AppColors.blackColor,
-                color: AppColors.greyColor),
+                color: AppColors.blueColor),
             OnboardingPage(
                 image: "assets/images/onboarding3.jpg",
                 text:
-                    "Are you ready to get your hands dirty?",
+                    "Buy sell and discover!",
                 textColor: AppColors.blackColor,
                 color: Colors.white),
           ],

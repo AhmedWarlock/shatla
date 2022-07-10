@@ -15,17 +15,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-<<<<<<< HEAD
       debugShowCheckedModeBanner: false,
       title: 'Shatla',
-     
-=======
-      title: 'Flutter Demo',
       theme: ThemeData(
         fontFamily: 'Roboto',
-        primarySwatch: Colors.blue,
       ),
->>>>>>> 2a0193f75d2f2d9e38f356c0a3b18682d766553b
       initialRoute: AppRouter.getOnboarding(),
       getPages: AppRouter.routes,
     );
