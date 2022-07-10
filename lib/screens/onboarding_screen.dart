@@ -26,6 +26,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
+      body: SafeArea(
+          child: Center(
+              child: Text(
+        "hello",
+        style: TextStyle(fontSize: 40),
+      ))),
+=======
       body: Container(
         padding: EdgeInsets.only(bottom: Dimensions.bottomSheetHeight),
         child: PageView(
@@ -134,6 +142,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ],
               ),
             ),
+>>>>>>> 52f57be033ce80dc9577486ceb32f452ba83f05d
     );
   }
 }

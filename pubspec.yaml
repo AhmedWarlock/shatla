@@ -65,6 +65,15 @@ flutter:
     - family: Roboto
       fonts:
         - asset: fonts/Roboto-Regular.ttf
+    - family: Pacifico
+      fonts:
+        - asset: fonts/Pacifico-Regular.ttf
+    - family: Quicksandmed
+      fonts:
+        - asset: fonts/Quicksand-Medium.ttf
+    - family: Quicksand
+      fonts:
+        - asset: fonts/Quicksand-Regular.ttf
        
   #
   # For details regarding fonts from package dependencies,
