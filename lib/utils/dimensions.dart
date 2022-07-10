@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+//making the app responsive by calculating dimensions
+
 class Dimensions {
   static double screenHeight = Get.context!.height;
   static double screenWidth = Get.context!.width;
@@ -26,6 +28,17 @@ class Dimensions {
   static double radiu15 = screenHeight / 56.27;
   static double radius30 = screenHeight / 28.13;
 
+<<<<<<< HEAD
+=======
+
+static double bottomSheetHeight = screenHeight/8.5;
+static double loginContainer = screenHeight/2;
+static double loginContainerHeight = screenHeight/14;
+
+
+
+
+>>>>>>> 52f57be033ce80dc9577486ceb32f452ba83f05d
   static double isconSize24 = screenHeight / 35.17;
   static double isconSize16 = screenHeight / 52.7;
 }
