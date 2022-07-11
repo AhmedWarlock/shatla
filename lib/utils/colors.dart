@@ -6,7 +6,7 @@ class AppColors {
   static Color green2Trans = Color(0x302f8551);
   static Color darkGreen = Color(0xff102a22);
   static Color yellow = Color(0xfff8bc0e);
-  static Color lightGreen = Color(0xffa8face);
+  static const Color lightGreen = Color(0xffa8face);
 
   static const Color greenColor = Color(0xff01AC3C);
 
