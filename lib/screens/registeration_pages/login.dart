@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shatla/routes/app_router.dart';
 import 'package:shatla/screens/registeration_pages/components/email_field.dart';
 import 'package:shatla/screens/registeration_pages/components/passoword_field.dart';
 import 'package:shatla/utils/colors.dart';
 import 'package:shatla/utils/dimensions.dart';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -25,7 +27,7 @@ class LoginScreen extends StatelessWidget {
             width: double.maxFinite,
             decoration: BoxDecoration(
                 image: DecorationImage(
-              image: AssetImage('images/plant1.jpeg'),
+              image: AssetImage('assets/images/plant1.jpeg'),
               fit: BoxFit.cover,
             )),
           ),
@@ -77,7 +79,7 @@ class LoginScreen extends StatelessWidget {
                       Text('Don\'t have an account?. ',
                           style: TextStyle(color: Colors.white)),
                       InkWell(
-                        onTap: (() {}),
+                        onTap: (() => Get.offAndToNamed(AppRouter.getSignup())),
                         child: Text(
                           'Sign up',
                           style: TextStyle(color: AppColors.lightGreen),

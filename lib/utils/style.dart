@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shatla/utils/colors.dart';
 import 'package:shatla/utils/dimensions.dart';
 
 class MyInputTheme {
@@ -45,4 +46,14 @@ class MyInputTheme {
         labelStyle: _buildTextStyle(Colors.black),
         prefixStyle: _buildTextStyle(Colors.black),
       );
+}
+
+class MyAppBartheme {
+  AppBarTheme appBarTheme() {
+    return AppBarTheme(
+      backgroundColor: AppColors.darkGreen,
+      elevation: 0,
+      centerTitle: true,
+    );
+  }
 }
