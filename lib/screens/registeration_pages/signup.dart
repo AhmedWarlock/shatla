@@ -24,9 +24,9 @@ class SignupScreen extends StatelessWidget {
           child: Container(
             height: double.maxFinite,
             width: double.maxFinite,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
-              image: AssetImage('images/plant1.jpeg'),
+              image: AssetImage('assets/images/plant1.jpeg'),
               fit: BoxFit.cover,
             )),
           ),
@@ -51,14 +51,17 @@ class SignupScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      NameField(),
-                      EmailField(),
-                      PhoneNumField(),
-                      PasswordField(),
+                      const NameField(),
+                      const EmailField(),
+                      const PhoneNumField(),
+                      const PasswordField(),
 
                       // Sign Up button
                       TextButton(
                         onPressed: _submit,
+                         style: TextButton.styleFrom(
+                          backgroundColor: AppColors.lightGreen,
+                        ),
                         child: Text(
                           'Sign up',
                           style: TextStyle(
@@ -66,20 +69,18 @@ class SignupScreen extends StatelessWidget {
                             fontSize: Dimensions.font16,
                           ),
                         ),
-                        style: TextButton.styleFrom(
-                          backgroundColor: AppColors.lightGreen,
-                        ),
+                       
                       ),
 
                       // Routing to LogIn page
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('Already have an account?. ',
-                              style: TextStyle(color: Colors.white)),
+                          const Text('Already have an account?. ',
+                              style:  TextStyle(color: Colors.white)),
                           InkWell(
                             onTap: (() {}),
-                            child: Text(
+                            child: const Text(
                               'Log in',
                               style: TextStyle(color: AppColors.lightGreen),
                             ),

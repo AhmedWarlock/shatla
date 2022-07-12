@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shatla/utils/dimensions.dart';
 
 class MyInputTheme {
   // Method for generating the Text Style

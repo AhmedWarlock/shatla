@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:shatla/screens/onboarding_screen.dart';
+import 'package:shatla/screens/registeration_pages/login.dart';
+import 'package:shatla/screens/registeration_pages/signup.dart';
 
 class AppRouter {
   //routes names
@@ -14,11 +16,8 @@ class AppRouter {
 
 //list of GetPages one for each route
   static List<GetPage> routes = [
-    GetPage(
-      name: onboarding,
-      page: () => const OnboardingScreen(),
-      GetPage(name: login, page: () => LoginScreen()),
-      GetPage(name: signup, page: () => SignupScreen()),
-    )
+    GetPage(name: onboarding, page: () => const OnboardingScreen()),
+    GetPage(name: login, page: () => LoginScreen()),
+    GetPage(name: signup, page: () => SignupScreen()),
   ];
 }

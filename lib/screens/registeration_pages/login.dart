@@ -23,9 +23,9 @@ class LoginScreen extends StatelessWidget {
           child: Container(
             height: double.maxFinite,
             width: double.maxFinite,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
-              image: AssetImage('images/plant1.jpeg'),
+              image: AssetImage('assets/images/plant1.jpeg'),
               fit: BoxFit.cover,
             )),
           ),
@@ -50,13 +50,16 @@ class LoginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  EmailField(),
-                  PasswordField(),
+                  const EmailField(),
+                  const PasswordField(),
 
                   // Log in button
 
                   TextButton(
                     onPressed: _submit,
+                    style: TextButton.styleFrom(
+                      backgroundColor: AppColors.lightGreen,
+                    ),
                     child: Text(
                       'Login',
                       style: TextStyle(
@@ -64,9 +67,7 @@ class LoginScreen extends StatelessWidget {
                         fontSize: Dimensions.font16,
                       ),
                     ),
-                    style: TextButton.styleFrom(
-                      backgroundColor: AppColors.lightGreen,
-                    ),
+                    
                   ),
 
                   // Routing to Signup page
@@ -74,11 +75,11 @@ class LoginScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Don\'t have an account?. ',
+                      const Text('Don\'t have an account?. ',
                           style: TextStyle(color: Colors.white)),
                       InkWell(
                         onTap: (() {}),
-                        child: Text(
+                        child: const Text(
                           'Sign up',
                           style: TextStyle(color: AppColors.lightGreen),
                         ),

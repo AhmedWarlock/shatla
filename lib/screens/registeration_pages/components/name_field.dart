@@ -16,7 +16,7 @@ class NameField extends StatelessWidget {
         }
       }),
       keyboardType: TextInputType.name,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         hintText: 'Name',
         helperText: '',
       ),
