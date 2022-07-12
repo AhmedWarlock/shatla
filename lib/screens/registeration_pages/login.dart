@@ -83,7 +83,7 @@ class LoginScreen extends StatelessWidget {
                         onTap: (() => Get.offAndToNamed(AppRouter.getSignup())),
                         child: const Text(
                           'Sign up',
-                          style: const TextStyle(color: AppColors.lightGreen),
+                          style:  TextStyle(color: AppColors.lightGreen),
                         ),
                       ),
                     ],

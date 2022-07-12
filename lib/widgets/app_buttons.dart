@@ -26,12 +26,12 @@ class AppButton extends StatelessWidget {
       child: Container(
         height: height,
         width: width,
-        padding: EdgeInsets.all(Dimensions.width5),
-        child: Center(child: child),
         decoration: BoxDecoration(
             color: backgroundColor,
             borderRadius:
                 BorderRadius.all(Radius.circular(Dimensions.radiu20))),
+        padding: EdgeInsets.all(Dimensions.width5),
+        child: Center(child: child),
       ),
     );
   }
