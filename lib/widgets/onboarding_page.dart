@@ -28,7 +28,7 @@ final Color color;
           ),
           SizedBox(height: Dimensions.height15*1.5,),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: Dimensions.width30),
+            margin: EdgeInsets.symmetric(horizontal: Dimensions.height30),
             child: Text(text,
             textAlign: TextAlign.center,
             

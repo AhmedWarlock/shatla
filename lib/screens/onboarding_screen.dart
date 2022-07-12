@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:shatla/utils/colors.dart';
 import 'package:shatla/utils/dimensions.dart';
@@ -35,7 +33,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               isLastPage = index == 2;
             });
           },
-          children:const [
+          children: const [
             OnboardingPage(
                 image: "assets/images/onboarding1.jpg",
                 text:
@@ -44,15 +42,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 color: Colors.white),
             OnboardingPage(
                 image: 'assets/images/onboarding2.jpg',
-                text:
-                    "Ask a question and receive help from the community",
-
+                text: "Ask a question and receive help from the community",
                 textColor: AppColors.blackColor,
                 color: AppColors.blueColor),
             OnboardingPage(
                 image: "assets/images/onboarding3.jpg",
-                text:
-                    "Buy sell and discover!",
+                text: "Buy sell and discover!",
                 textColor: AppColors.blackColor,
                 color: Colors.white),
           ],
@@ -60,34 +55,34 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       ),
       bottomSheet: isLastPage
           ? GestureDetector(
-            onTap: ()async{
-            // SharedPreferences pref = await SharedPreferences.getInstance();
-            // pref.setBool("showHome", true);
-            },
-            child: Container(
-              margin:EdgeInsets.symmetric(horizontal: Dimensions.width30,vertical: Dimensions.height15),
-              padding: EdgeInsets.symmetric(horizontal: Dimensions.width30),
-              height: Dimensions.loginContainerHeight,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: AppColors.greenColor,
-                borderRadius: BorderRadius.circular(Dimensions.height15),
-              ),
-              child: Center(
-                child: Text("Get Started ",
-                   
-                style: TextStyle(
-                  
-                  color: Colors.white,
-                  fontSize: Dimensions.font16*1.4,
-                  
+              onTap: () async {
+                // SharedPreferences pref = await SharedPreferences.getInstance();
+                // pref.setBool("showHome", true);
+              },
+              child: Container(
+                margin: EdgeInsets.symmetric(
+                    horizontal: Dimensions.height30,
+                    vertical: Dimensions.height15),
+                padding: EdgeInsets.symmetric(horizontal: Dimensions.height30),
+                height: Dimensions.loginContainerHeight,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: AppColors.greenColor,
+                  borderRadius: BorderRadius.circular(Dimensions.height15),
                 ),
+                child: Center(
+                  child: Text(
+                    "Get Started ",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: Dimensions.font16 * 1.4,
+                    ),
+                  ),
                 ),
               ),
-            ),
-          )
+            )
           : Container(
-              padding: EdgeInsets.symmetric(horizontal: Dimensions.width30),
+              padding: EdgeInsets.symmetric(horizontal: Dimensions.height30),
               height: Dimensions.bottomSheetHeight,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -100,7 +95,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         "SKIP",
                         style: TextStyle(
                             color: AppColors.greenColor,
-                            fontSize: Dimensions.font16*1.2,
+                            fontSize: Dimensions.font16 * 1.2,
                             fontWeight: FontWeight.bold),
                       )),
                   Center(
@@ -128,7 +123,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         "NEXT",
                         style: TextStyle(
                             color: AppColors.greenColor,
-                            fontSize: Dimensions.font16*1.2,
+                            fontSize: Dimensions.font16 * 1.2,
                             fontWeight: FontWeight.bold),
                       )),
                 ],

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shatla/routes/app_router.dart';
 import 'package:shatla/screens/registeration_pages/components/email_field.dart';
 import 'package:shatla/screens/registeration_pages/components/passoword_field.dart';
 import 'package:shatla/utils/colors.dart';
 import 'package:shatla/utils/dimensions.dart';
+import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -78,10 +80,10 @@ class LoginScreen extends StatelessWidget {
                       const Text('Don\'t have an account?. ',
                           style: TextStyle(color: Colors.white)),
                       InkWell(
-                        onTap: (() {}),
+                        onTap: (() => Get.offAndToNamed(AppRouter.getSignup())),
                         child: const Text(
                           'Sign up',
-                          style: TextStyle(color: AppColors.lightGreen),
+                          style: const TextStyle(color: AppColors.lightGreen),
                         ),
                       ),
                     ],

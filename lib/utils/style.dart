@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shatla/utils/colors.dart';
+
 
 class MyInputTheme {
   // Method for generating the Text Style
@@ -13,7 +15,7 @@ class MyInputTheme {
 
   OutlineInputBorder _buildOutlineBorder(Color color) {
     return OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(20)),
+        borderRadius: const BorderRadius.all( Radius.circular(20)),
         borderSide: BorderSide(
           color: color,
           width: 1,
@@ -22,7 +24,7 @@ class MyInputTheme {
 
   InputDecorationTheme theme() => InputDecorationTheme(
         //Basic paramerters
-        contentPadding: EdgeInsets.all(15),
+        contentPadding: const EdgeInsets.all(15),
         filled: true,
         fillColor: Colors.white.withOpacity(0.5),
         isDense: true,
@@ -44,4 +46,14 @@ class MyInputTheme {
         labelStyle: _buildTextStyle(Colors.black),
         prefixStyle: _buildTextStyle(Colors.black),
       );
+}
+
+class MyAppBartheme {
+  AppBarTheme appBarTheme() {
+    return AppBarTheme(
+      backgroundColor: AppColors.darkGreen,
+      elevation: 0,
+      centerTitle: true,
+    );
+  }
 }

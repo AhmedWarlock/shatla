@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shatla/routes/app_router.dart';
 import 'package:shatla/screens/registeration_pages/components/email_field.dart';
 import 'package:shatla/screens/registeration_pages/components/name_field.dart';
 import 'package:shatla/screens/registeration_pages/components/passoword_field.dart';
@@ -79,7 +81,8 @@ class SignupScreen extends StatelessWidget {
                           const Text('Already have an account?. ',
                               style:  TextStyle(color: Colors.white)),
                           InkWell(
-                            onTap: (() {}),
+                            onTap: (() =>
+                                Get.offAndToNamed(AppRouter.getLogin())),
                             child: const Text(
                               'Log in',
                               style: TextStyle(color: AppColors.lightGreen),

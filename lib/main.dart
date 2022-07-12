@@ -19,11 +19,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        appBarTheme: MyAppBartheme().appBarTheme(),
+        primarySwatch: Colors.green,
         inputDecorationTheme: MyInputTheme().theme(),
         fontFamily: 'Quicksandmed',
       ),
-      initialRoute: AppRouter.getSignup(),
+      initialRoute: AppRouter.getOnboarding(),
       getPages: AppRouter.routes,
     );
   }
