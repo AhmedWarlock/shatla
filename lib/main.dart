@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shatla/helper/dependencies.dart' as dep;
 import 'package:shatla/routes/app_router.dart';
-import 'package:shatla/utils/colors.dart';
 import 'package:shatla/utils/style.dart';
 
 void main() async {

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:shatla/screens/home.dart';
+import 'package:shatla/screens/home/home.dart';
 import 'package:shatla/screens/onboarding_screen.dart';
 
 import '../screens/registeration_pages/login.dart';
@@ -23,6 +23,6 @@ class AppRouter {
     GetPage(name: onboarding, page: () => const OnboardingScreen()),
     GetPage(name: login, page: () => LoginScreen()),
     GetPage(name: signup, page: () => SignupScreen()),
-    GetPage(name: home, page: () => HomeScreen()),
+    GetPage(name: home, page: () => const HomeScreen()),
   ];
 }

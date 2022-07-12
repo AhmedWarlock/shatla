@@ -19,7 +19,7 @@ class PhoneNumField extends StatelessWidget {
         }
       }),
       keyboardType: TextInputType.phone,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         hintText: 'Phone Number',
         helperText: '',
       ),
