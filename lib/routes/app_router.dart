@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:shatla/screens/home/home.dart';
 import 'package:shatla/screens/onboarding_screen.dart';
+import 'package:shatla/screens/registeration_pages/login.dart';
+import 'package:shatla/screens/registeration_pages/signup.dart';
 
 import '../screens/registeration_pages/login.dart';
 import '../screens/registeration_pages/signup.dart';

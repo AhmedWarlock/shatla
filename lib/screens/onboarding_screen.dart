@@ -61,9 +61,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               },
               child: Container(
                 margin: EdgeInsets.symmetric(
-                    horizontal: Dimensions.width30,
+                    horizontal: Dimensions.height30,
                     vertical: Dimensions.height15),
-                padding: EdgeInsets.symmetric(horizontal: Dimensions.width30),
+                padding: EdgeInsets.symmetric(horizontal: Dimensions.height30),
                 height: Dimensions.loginContainerHeight,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -82,7 +82,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             )
           : Container(
-              padding: EdgeInsets.symmetric(horizontal: Dimensions.width30),
+              padding: EdgeInsets.symmetric(horizontal: Dimensions.height30),
               height: Dimensions.bottomSheetHeight,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
