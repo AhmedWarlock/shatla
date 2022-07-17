@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         inputDecorationTheme: MyInputTheme().theme(),
         fontFamily: 'Quicksandmed',
       ),
-      initialRoute: AppRouter.getSignup(),
+      initialRoute: AppRouter.getLogin(),
       getPages: AppRouter.routes,
     );
   }

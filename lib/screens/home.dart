@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Shatla'),
+        title: const Text('Shatla'),
       ),
       body: Center(
         child: AppButton(
@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
           height: Dimensions.height60,
           width: Dimensions.width60,
           onTap: () {},
-          child: AppTextMedium(
+          child: const AppTextMedium(
             text: 'Hello',
             color: Colors.black,
           ),

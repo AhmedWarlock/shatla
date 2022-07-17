@@ -3,7 +3,7 @@ import 'package:shatla/utils/colors.dart';
 import 'package:shatla/utils/dimensions.dart';
 
 class AppButton extends StatelessWidget {
-  AppButton(
+  const AppButton(
       {Key? key,
       required this.child,
       this.backgroundColor = AppColors.lightGreen,
@@ -12,11 +12,11 @@ class AppButton extends StatelessWidget {
       required this.borderRadius,
       required this.onTap})
       : super(key: key);
-  double height;
-  double width;
-  Color backgroundColor;
+  final double height;
+  final double width;
+  final Color backgroundColor;
   final Widget child;
-  double borderRadius;
+  final double borderRadius;
   final void Function() onTap;
 
   @override

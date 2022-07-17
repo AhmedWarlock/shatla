@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:shatla/screens/cart/cart_screen.dart';
 import 'package:shatla/screens/home.dart';
 import 'package:shatla/screens/onboarding_screen.dart';
 import 'package:shatla/screens/registeration_pages/login.dart';
@@ -13,12 +14,15 @@ class AppRouter {
   static const String login = '/login';
   static const String signup = '/signup';
   static const String home = '/home';
+  static const String cart = '/cart';
+
 
 //methods returns routes names
   static String getOnboarding() => onboarding;
   static String getLogin() => login;
   static String getSignup() => signup;
   static String getHome() => home;
+  static String getCart() => cart;
 
 //list of GetPages one for each route
   static List<GetPage> routes = [
@@ -26,5 +30,7 @@ class AppRouter {
     GetPage(name: login, page: () => LoginScreen()),
     GetPage(name: signup, page: () => SignupScreen()),
     GetPage(name: home, page: () => const HomeScreen()),
+    GetPage(name: cart, page: () => const CartScreen()),
+
   ];
 }
