@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shatla/utils/colors.dart';
 
-
 class MyInputTheme {
   // Method for generating the Text Style
   TextStyle _buildTextStyle(Color color, {double size = 16.0}) {
@@ -15,7 +14,7 @@ class MyInputTheme {
 
   OutlineInputBorder _buildOutlineBorder(Color color) {
     return OutlineInputBorder(
-        borderRadius: const BorderRadius.all( Radius.circular(20)),
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
         borderSide: BorderSide(
           color: color,
           width: 1,
@@ -50,7 +49,7 @@ class MyInputTheme {
 
 class MyAppBartheme {
   AppBarTheme appBarTheme() {
-    return AppBarTheme(
+    return const AppBarTheme(
       backgroundColor: AppColors.darkGreen,
       elevation: 0,
       centerTitle: true,

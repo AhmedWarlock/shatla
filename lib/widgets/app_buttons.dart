@@ -7,14 +7,14 @@ class AppButton extends StatelessWidget {
       {Key? key,
       required this.child,
       this.backgroundColor = AppColors.lightGreen,
-      required this.height,
-      required this.width,
-      required this.borderRadius,
+      this.height,
+      this.width,
+      this.borderRadius = 4343.009,
       required this.onTap})
       : super(key: key);
-  final double height;
-  final double width;
-  final Color backgroundColor;
+  final double? height;
+  final double? width;
+  final Color? backgroundColor;
   final Widget child;
   final double borderRadius;
   final void Function() onTap;
@@ -24,13 +24,13 @@ class AppButton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        height: height,
-        width: width,
+        height: height ?? Dimensions.height50 * (55 / 50),
+        width: width ?? Dimensions.width50 * (55 / 50),
+        padding: EdgeInsets.all(Dimensions.width5),
         decoration: BoxDecoration(
             color: backgroundColor,
-            borderRadius:
-                BorderRadius.all(Radius.circular(Dimensions.radiu20))),
-        padding: EdgeInsets.all(Dimensions.width5),
+            borderRadius: BorderRadius.all(Radius.circular(
+                borderRadius == 4343.009 ? Dimensions.radiu15 : borderRadius))),
         child: Center(child: child),
       ),
     );

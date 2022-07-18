@@ -58,10 +58,10 @@ class LoginScreen extends StatelessWidget {
                   // Log in button
 
                   TextButton(
-                    onPressed: _submit,
                     style: TextButton.styleFrom(
                       backgroundColor: AppColors.lightGreen,
                     ),
+                    onPressed: _submit,
                     child: Text(
                       'Login',
                       style: TextStyle(
@@ -69,7 +69,6 @@ class LoginScreen extends StatelessWidget {
                         fontSize: Dimensions.font16,
                       ),
                     ),
-                    
                   ),
 
                   // Routing to Signup page
@@ -83,7 +82,7 @@ class LoginScreen extends StatelessWidget {
                         onTap: (() => Get.offAndToNamed(AppRouter.getSignup())),
                         child: const Text(
                           'Sign up',
-                          style:  TextStyle(color: AppColors.lightGreen),
+                          style: TextStyle(color: AppColors.lightGreen),
                         ),
                       ),
                     ],

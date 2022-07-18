@@ -60,10 +60,10 @@ class SignupScreen extends StatelessWidget {
 
                       // Sign Up button
                       TextButton(
-                        onPressed: _submit,
-                         style: TextButton.styleFrom(
+                        style: TextButton.styleFrom(
                           backgroundColor: AppColors.lightGreen,
                         ),
+                        onPressed: _submit,
                         child: Text(
                           'Sign up',
                           style: TextStyle(
@@ -71,7 +71,6 @@ class SignupScreen extends StatelessWidget {
                             fontSize: Dimensions.font16,
                           ),
                         ),
-                       
                       ),
 
                       // Routing to LogIn page
@@ -79,7 +78,7 @@ class SignupScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Text('Already have an account?. ',
-                              style:  TextStyle(color: Colors.white)),
+                              style: TextStyle(color: Colors.white)),
                           InkWell(
                             onTap: (() =>
                                 Get.offAndToNamed(AppRouter.getLogin())),
