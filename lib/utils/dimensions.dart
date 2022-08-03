@@ -46,4 +46,7 @@ class Dimensions {
 
   static double isconSize24 = screenHeight / 35.17;
   static double isconSize16 = screenHeight / 52.7;
+
+
+  static double splashImg = screenHeight / 3.38;
 }

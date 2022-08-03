@@ -11,6 +11,7 @@ class ProductScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
+          //product image
           Positioned(
             left: 0,
             right: 0,
@@ -25,6 +26,8 @@ class ProductScreen extends StatelessWidget {
               ),
             ),
           ),
+
+          //action icons
           Positioned(
             top: Dimensions.height30 * 1.1,
             left: Dimensions.height20,
@@ -39,6 +42,8 @@ class ProductScreen extends StatelessWidget {
               ],
             ),
           ),
+
+          //product details container
           Positioned(
             left: 0,
             right: 0,
@@ -76,6 +81,8 @@ class ProductScreen extends StatelessWidget {
           ),
         ],
       ),
+
+      //add to cart
       bottomNavigationBar: Container(
         margin: EdgeInsets.symmetric(
             horizontal: Dimensions.height30, vertical: Dimensions.height15),

@@ -10,6 +10,7 @@ import 'package:shatla/screens/onboarding_screen.dart';
 import 'package:shatla/screens/product_screen.dart';
 import 'package:shatla/screens/registeration_pages/login_screen.dart';
 import 'package:shatla/screens/registeration_pages/signup_screen.dart';
+import 'package:shatla/screens/splash/splash_screen.dart';
 
 class AppRouter {
   //routes names
@@ -24,6 +25,7 @@ class AppRouter {
   static const String comment = '/comment';
   static const String addPost = '/add_post';
   static const String addProduct = '/add_product';
+  static const String splash = '/splash';
 
 //methods returns routes names
   static String getOnboarding() => onboarding;
@@ -37,6 +39,7 @@ class AppRouter {
   static String getComment() => comment;
   static String getAddPost() => addPost;
   static String getAddProduct() => addProduct;
+  static String getSplash() => splash;
 
 //list of GetPages one for each route
   static List<GetPage> routes = [
@@ -51,5 +54,6 @@ class AppRouter {
     GetPage(name: comment, page: () => const CommentView()),
     GetPage(name: addPost, page: () => const AddPostScreen()),
     GetPage(name: addProduct, page: () => const AddProductScreen()),
+    GetPage(name: splash, page: () => const SplashScreen()),
   ];
 }
