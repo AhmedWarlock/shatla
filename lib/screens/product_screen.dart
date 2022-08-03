@@ -17,7 +17,7 @@ class ProductScreen extends StatelessWidget {
             child: Container(
               height: Dimensions.productImgHeight,
               width: double.maxFinite,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage("assets/images/product.jpg"),
                   fit: BoxFit.cover,
@@ -31,7 +31,7 @@ class ProductScreen extends StatelessWidget {
             right: Dimensions.height20,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
+              children: const [
                 AppIcon(
                   icon: Icons.arrow_back_sharp,
                 ),
@@ -48,8 +48,8 @@ class ProductScreen extends StatelessWidget {
               padding: EdgeInsets.all(Dimensions.height20),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(Dimensions.radius30*1.5),
-                    topRight: Radius.circular(Dimensions.radius30*1.5),
+                    topLeft: Radius.circular(Dimensions.radius30 * 1.5),
+                    topRight: Radius.circular(Dimensions.radius30 * 1.5),
                   ),
                   color: Colors.white),
               child: Column(
@@ -61,14 +61,15 @@ class ProductScreen extends StatelessWidget {
                         fontSize: Dimensions.font26,
                         fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: Dimensions.height10,),
+                  SizedBox(
+                    height: Dimensions.height10,
+                  ),
                   Text(
                     "Discription",
                     style: TextStyle(
-                        fontSize: Dimensions.font16,
+                      fontSize: Dimensions.font16,
                     ),
                   ),
-                  
                 ],
               ),
             ),
@@ -76,27 +77,25 @@ class ProductScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: Container(
-                margin: EdgeInsets.symmetric(
-                    horizontal: Dimensions.height30,
-                    vertical: Dimensions.height15),
-                padding: EdgeInsets.symmetric(horizontal: Dimensions.height30),
-                height: Dimensions.loginContainerHeight,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: AppColors.lightGreen,
-                  borderRadius: BorderRadius.circular(Dimensions.height30),
-                ),
-                child: Center(
-                  child: Text(
-                    "Add to cart | \$15",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: Dimensions.font16 * 1.4,
-                    ),
-                  ),
-                ),
-              ),
-               
+        margin: EdgeInsets.symmetric(
+            horizontal: Dimensions.height30, vertical: Dimensions.height15),
+        padding: EdgeInsets.symmetric(horizontal: Dimensions.height30),
+        height: Dimensions.loginContainerHeight,
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: AppColors.lightGreen,
+          borderRadius: BorderRadius.circular(Dimensions.height30),
+        ),
+        child: Center(
+          child: Text(
+            "Add to cart | \$15",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: Dimensions.font16 * 1.4,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

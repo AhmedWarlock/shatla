@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shatla/utils/colors.dart';
+import 'package:shatla/utils/dimensions.dart';
 
 class MyInputTheme {
   // Method for generating the Text Style
@@ -14,7 +15,7 @@ class MyInputTheme {
 
   OutlineInputBorder _buildOutlineBorder(Color color) {
     return OutlineInputBorder(
-        borderRadius: const BorderRadius.all(Radius.circular(20)),
+        borderRadius: const BorderRadius.all(Radius.circular(15)),
         borderSide: BorderSide(
           color: color,
           width: 1,
@@ -30,7 +31,7 @@ class MyInputTheme {
         floatingLabelBehavior: FloatingLabelBehavior.always,
 
         //Borders
-        enabledBorder: _buildOutlineBorder(Colors.grey),
+        enabledBorder: _buildOutlineBorder(AppColors.greyColor),
         errorBorder: _buildOutlineBorder(Colors.red),
         focusedBorder: _buildOutlineBorder(Colors.white),
         focusedErrorBorder: _buildOutlineBorder(Colors.red),
@@ -50,9 +51,8 @@ class MyInputTheme {
 class MyAppBartheme {
   AppBarTheme appBarTheme() {
     return const AppBarTheme(
-      backgroundColor: AppColors.darkGreen,
+      backgroundColor: AppColors.lightGreen,
       elevation: 0,
-      centerTitle: true,
     );
   }
 }
