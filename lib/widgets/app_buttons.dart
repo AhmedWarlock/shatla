@@ -30,7 +30,9 @@ class AppButton extends StatelessWidget {
         decoration: BoxDecoration(
             color: backgroundColor,
             borderRadius: BorderRadius.all(Radius.circular(
-                borderRadius == 4343.009 ? Dimensions.radiu15 : borderRadius))),
+                borderRadius == 4343.009
+                    ? Dimensions.radius15
+                    : borderRadius))),
         child: Center(child: child),
       ),
     );

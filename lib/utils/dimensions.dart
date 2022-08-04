@@ -35,9 +35,10 @@ class Dimensions {
   static double font26 = screenHeight / 26.538;
 
   static double radius6 = screenHeight / 140.67;
-  static double radiu20 = screenHeight / 42.2;
-  static double radiu15 = screenHeight / 56.27;
+  static double radius20 = screenHeight / 42.2;
+  static double radius15 = screenHeight / 56.27;
   static double radius30 = screenHeight / 28.13;
+  static double radius36 = screenHeight / 23.441;
 
   static double bottomSheetHeight = screenHeight / 8.5;
   static double loginContainer = screenHeight / 2;
@@ -46,7 +47,6 @@ class Dimensions {
 
   static double isconSize24 = screenHeight / 35.17;
   static double isconSize16 = screenHeight / 52.7;
-
 
   static double splashImg = screenHeight / 3.38;
 }

@@ -23,7 +23,7 @@ class AccountContainer extends StatelessWidget {
           bottom: Dimensions.height10),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(Dimensions.radiu20),
+        borderRadius: BorderRadius.circular(Dimensions.radius20),
         boxShadow: [
           BoxShadow(
             offset: const Offset(0, 2),

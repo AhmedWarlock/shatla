@@ -36,7 +36,7 @@ class CommentView extends StatelessWidget {
                 width: double.maxFinite,
                 decoration: BoxDecoration(
                     borderRadius:
-                        BorderRadius.all(Radius.circular(Dimensions.radiu15)),
+                        BorderRadius.all(Radius.circular(Dimensions.radius15)),
                     image: const DecorationImage(
                         image: AssetImage('assets/images/product.jpg'),
                         fit: BoxFit.cover)),
@@ -60,9 +60,9 @@ class CommentView extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(Dimensions.radiu15),
-                            bottomLeft: Radius.circular(Dimensions.radiu15),
-                            bottomRight: Radius.circular(Dimensions.radiu15),
+                            topRight: Radius.circular(Dimensions.radius15),
+                            bottomLeft: Radius.circular(Dimensions.radius15),
+                            bottomRight: Radius.circular(Dimensions.radius15),
                           )),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

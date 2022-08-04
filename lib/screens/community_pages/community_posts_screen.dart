@@ -9,7 +9,7 @@ class PostsScreen extends StatelessWidget {
   void _showPicture() {
     Get.defaultDialog(
         title: '',
-        radius: Dimensions.radiu15,
+        radius: Dimensions.radius15,
         backgroundColor: Colors.transparent,
         contentPadding: const EdgeInsets.all(0),
         content: Container(
@@ -17,7 +17,7 @@ class PostsScreen extends StatelessWidget {
           width: double.maxFinite - Dimensions.width20,
           decoration: BoxDecoration(
               borderRadius:
-                  BorderRadius.all(Radius.circular(Dimensions.radiu15)),
+                  BorderRadius.all(Radius.circular(Dimensions.radius15)),
               image: const DecorationImage(
                   image: AssetImage('assets/images/product.jpg'),
                   fit: BoxFit.cover)),
@@ -82,7 +82,7 @@ class PostsScreen extends StatelessWidget {
               decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius:
-                      BorderRadius.all(Radius.circular(Dimensions.radiu15))),
+                      BorderRadius.all(Radius.circular(Dimensions.radius15))),
               child: Column(
                 children: [
                   ListTile(
@@ -107,7 +107,7 @@ class PostsScreen extends StatelessWidget {
                               fit: BoxFit.cover),
                           color: AppColors.greyColor,
                           borderRadius: BorderRadius.all(
-                            Radius.circular(Dimensions.radiu15),
+                            Radius.circular(Dimensions.radius15),
                           )),
                     ),
                   ),
