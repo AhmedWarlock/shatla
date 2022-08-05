@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shatla/routes/app_router.dart';
-import 'package:shatla/screens/registeration_pages/components/email_field.dart';
-import 'package:shatla/screens/registeration_pages/components/passoword_field.dart';
 import 'package:shatla/utils/colors.dart';
 import 'package:shatla/utils/dimensions.dart';
 import 'package:get/get.dart';
@@ -9,6 +7,7 @@ import 'package:get/get.dart';
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool _isObscure = false;
 
   //On button press function
   void _submit() {
@@ -52,8 +51,50 @@ class LoginScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  const EmailField(),
-                  const PasswordField(),
+                  // EMail field
+                  TextFormField(
+                    validator: ((value) {
+                      if (value!.isNotEmpty && value.length < 4) {
+                        return 'Email must me longer than 4 characters';
+                      } else if (value.isEmpty) {
+                        return 'Email cannot be empty';
+                      } else {
+                        return null;
+                      }
+                    }),
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: const InputDecoration(
+                      hintText: 'Email',
+                      helperText: '',
+                    ),
+                  ),
+
+                  // Password field
+                  TextFormField(
+                    keyboardType: TextInputType.visiblePassword,
+                    obscureText: _isObscure,
+                    decoration: InputDecoration(
+                      hintText: 'Password',
+                      helperText: '',
+                      suffixIcon: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            _isObscure
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: AppColors.lightGreen,
+                          )),
+                    ),
+                    validator: ((value) {
+                      if (value!.isNotEmpty && value.length < 7) {
+                        return 'Password must me longer than 7 characters';
+                      } else if (value.isEmpty) {
+                        return 'Password cannot be empty';
+                      } else {
+                        return null;
+                      }
+                    }),
+                  ),
 
                   // Log in button
 
