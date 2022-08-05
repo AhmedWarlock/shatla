@@ -84,23 +84,68 @@ class ProductScreen extends StatelessWidget {
 
       //add to cart
       bottomNavigationBar: Container(
-        margin: EdgeInsets.symmetric(
-            horizontal: Dimensions.height30, vertical: Dimensions.height15),
-        padding: EdgeInsets.symmetric(horizontal: Dimensions.height30),
-        height: Dimensions.loginContainerHeight,
-        width: double.infinity,
+        padding: EdgeInsets.symmetric(horizontal: Dimensions.height15 * 2),
+        height: Dimensions.bottomHeightBar,
         decoration: BoxDecoration(
-          color: AppColors.lightGreen,
-          borderRadius: BorderRadius.circular(Dimensions.height30),
-        ),
-        child: Center(
-          child: Text(
-            "Add to cart | \$15",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: Dimensions.font16 * 1.4,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(Dimensions.radius20 * 2),
+                topRight: Radius.circular(Dimensions.radius20 * 2)),
+            color: AppColors.greyColor),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              padding: EdgeInsets.all(Dimensions.height20),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(Dimensions.radius20),
+              ),
+              child: Row(
+                children: [
+                  GestureDetector(
+                    onTap: () {},
+                    child: Icon(
+                      Icons.remove,
+                      color: AppColors.blackColor,
+                    ),
+                  ),
+                  SizedBox(
+                    width: Dimensions.width10 / 2,
+                  ),
+                  Text('0',
+                  style: TextStyle(
+                    
+                    fontSize: Dimensions.font22
+
+                  ),
+                  ),
+                  SizedBox(
+                    width: Dimensions.width10 / 2,
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Icon(
+                      Icons.add,
+                      color: AppColors.blackColor,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
+            Container(
+              padding: EdgeInsets.all(Dimensions.height20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Dimensions.radius20),
+                color: AppColors.lightGreen,
+              ),
+              child: Text(
+                "\$1 | Add to cart",
+                style: TextStyle(
+                  fontSize: Dimensions.font20,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
