@@ -1,16 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:shatla/controllers/auth_controller.dart';
 import 'package:shatla/routes/app_router.dart';
 import 'package:shatla/utils/colors.dart';
 import 'package:shatla/utils/dimensions.dart';
 import 'package:get/get.dart';
+import 'package:shatla/widgets/app_text.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({Key? key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  bool _isObscure = false;
+
+  final AuthController _authController = Get.find();
+
+  bool _isObscure = true;
 
   //On button press function
-  void _submit() {
+  void _submit() async {
     if (_formKey.currentState!.validate()) {}
   }
 
@@ -53,9 +64,10 @@ class LoginScreen extends StatelessWidget {
                 children: <Widget>[
                   // EMail field
                   TextFormField(
+                    controller: _authController.emailController,
                     validator: ((value) {
                       if (value!.isNotEmpty && value.length < 4) {
-                        return 'Email must me longer than 4 characters';
+                        return 'Email cannot be less than 4 characters';
                       } else if (value.isEmpty) {
                         return 'Email cannot be empty';
                       } else {
@@ -71,13 +83,16 @@ class LoginScreen extends StatelessWidget {
 
                   // Password field
                   TextFormField(
+                    controller: _authController.passwordController,
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: _isObscure,
                     decoration: InputDecoration(
                       hintText: 'Password',
                       helperText: '',
                       suffixIcon: IconButton(
-                          onPressed: () {},
+                          onPressed: () => setState(() {
+                                _isObscure = !_isObscure;
+                              }),
                           icon: Icon(
                             _isObscure
                                 ? Icons.visibility
@@ -117,14 +132,13 @@ class LoginScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('Don\'t have an account?. ',
-                          style: TextStyle(color: Colors.white)),
+                      const AppRegText(
+                          text: 'Don\'t have an account?. ',
+                          color: Colors.white),
                       InkWell(
                         onTap: (() => Get.offAndToNamed(AppRouter.getSignup())),
-                        child: const Text(
-                          'Sign up',
-                          style: TextStyle(color: AppColors.lightGreen),
-                        ),
+                        child: const AppRegText(
+                            text: 'Sign up', color: AppColors.lightGreen),
                       ),
                     ],
                   ),

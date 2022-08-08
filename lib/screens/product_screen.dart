@@ -61,7 +61,7 @@ class ProductScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Plant Name",
+                    "Plant Nae",
                     style: TextStyle(
                         fontSize: Dimensions.font26,
                         fontWeight: FontWeight.bold),

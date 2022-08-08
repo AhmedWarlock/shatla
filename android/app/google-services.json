@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "692196502783",
+    "project_id": "shatla-a4c23",
+    "storage_bucket": "shatla-a4c23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:692196502783:android:76b912391d03ca0acd30ca",
+        "android_client_info": {
+          "package_name": "com.example.shatla"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "692196502783-mir80uoabh6b9dpbffk3abhuthb99e17.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.shatla",
+            "certificate_hash": "ccda68b83c31e970a5d21bce0356721da659136f"
+          }
+        },
+        {
+          "client_id": "692196502783-2d9fv4n0svslga42i52igbev0n3uoje2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArHpGBBGjTWc_DHTVEq7c_IDJdwS1T6WY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "692196502783-2d9fv4n0svslga42i52igbev0n3uoje2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,4 +1,3 @@
-
 import 'package:shatla/data/models/product.dart';
 
 class CartModel {
@@ -11,7 +10,7 @@ class CartModel {
   int? quantity;
   bool? isExist;
   String? time;
-  ProductModel? product;
+  // ProductModel? product;
 
   CartModel({
     this.id,
@@ -21,7 +20,7 @@ class CartModel {
     this.quantity,
     this.isExist,
     this.time,
-    this.product,
+    // this.product,
   });
 
   CartModel.fromJson(Map<String, dynamic> json) {
@@ -32,7 +31,7 @@ class CartModel {
     isExist = json['isExist'];
     time = json['time'];
     img = json['img'];
-    product = ProductModel.fromJson(json);
+    // product = ProductModel.fromJson(json);
   }
 
   Map<String, dynamic> toJson() {
@@ -44,7 +43,7 @@ class CartModel {
       'isExist': isExist,
       'time': time,
       'img': img,
-      'product':product!.toJson(),
+      // 'product':product!.toJson(),
     };
   }
 }
