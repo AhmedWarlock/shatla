@@ -9,7 +9,7 @@ import 'package:shatla/widgets/app_text.dart';
 import '../../controllers/auth_controller.dart';
 
 class SignupScreen extends StatefulWidget {
-  SignupScreen({Key? key}) : super(key: key);
+  const SignupScreen({Key? key}) : super(key: key);
 
   @override
   State<SignupScreen> createState() => _SignupScreenState();

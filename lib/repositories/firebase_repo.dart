@@ -1,8 +1,14 @@
+import 'dart:io';
+import 'dart:math';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:path/path.dart';
+import 'package:get/get.dart';
 import 'package:shatla/constants/controllers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shatla/data/models/user_model.dart';
 import 'package:shatla/constants/firebase_consts.dart';
+import 'package:shatla/utils/sample_text.dart';
 
 class FireBaseRepo {
   // Get Current  user id
@@ -22,7 +28,6 @@ class FireBaseRepo {
         email: email,
         password: password,
       );
-      print('creted auth user ==================');
 
       // Create user document
       final id = await getUserId();
@@ -32,11 +37,12 @@ class FireBaseRepo {
                 .toDocument();
         if (!userDoc.exists) {
           firestoreUserRefrence.doc(id).set(newUserMap);
-          print('created document ==================');
         }
+        Get.offAllNamed('/picture');
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
+        // todo Create snackbar
         print('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
         print('The account already exists for that email.');
@@ -53,8 +59,11 @@ class FireBaseRepo {
         email: email,
         password: password,
       );
+      Get.offAllNamed('/main');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
+        // todo Create snackbar
+
         print('No user found for that email.');
       } else if (e.code == 'wrong-password') {
         print('Wrong password provided for that user.');
@@ -64,4 +73,24 @@ class FireBaseRepo {
 
   // Sign Out
   Future<void> signOut() async => await auth.signOut();
+
+  Future<void> uploadProfilePic(File image) async {
+    try {
+      // Todo Show loading Indicator
+      final uId = await getUserId();
+      // Upload to storage
+      var name = basename(image.path);
+      var random = Random().nextInt(100000);
+      name = '$random$name';
+      Reference storageRef = fireStorage.ref('Profile_images').child(name);
+      await storageRef.putFile(image);
+      // Save in FireStore
+      String picId = await storageRef.getDownloadURL();
+      await firestoreUserRefrence.doc(uId).update({'profileURL': picId});
+      Get.offAllNamed('/main');
+    } catch (e) {
+      print(e);
+      print('IMAGE IS NULL');
+    }
+  }
 }

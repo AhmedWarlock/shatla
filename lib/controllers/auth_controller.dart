@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,7 +12,6 @@ class AuthController extends GetxController {
     required this.fireBaseRepo,
   });
   final FireBaseRepo fireBaseRepo;
-  static AuthController instance = Get.find();
   late Rx<User> firebaseUser;
 
   TextEditingController emailController = TextEditingController();
@@ -45,6 +46,9 @@ class AuthController extends GetxController {
       password: passwordController.text);
 
   Future<void> signOut() async => await fireBaseRepo.signOut();
+
+  Future<void> uploadProfilePic(File image) async =>
+      await fireBaseRepo.uploadProfilePic(image);
 
   // Clear text Controller
   void _clearControllers() {

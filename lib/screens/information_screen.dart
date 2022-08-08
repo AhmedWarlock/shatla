@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shatla/utils/smaple_text.dart';
+import 'package:shatla/utils/sample_text.dart';
 import 'package:shatla/widgets/app_text.dart';
 
 import '../utils/colors.dart';

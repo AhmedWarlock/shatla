@@ -1,10 +1,10 @@
 import 'dart:io';
-import 'dart:math';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:shatla/controllers/auth_controller.dart';
 import 'package:shatla/utils/colors.dart';
+import 'package:shatla/utils/sample_text.dart';
 import 'package:shatla/widgets/app_text.dart';
-import 'package:path/path.dart';
 import 'package:get/get.dart';
 
 import '../../utils/dimensions.dart';
@@ -17,21 +17,17 @@ class AddProfilePicture extends StatefulWidget {
 }
 
 class _AddProfilePictureState extends State<AddProfilePicture> {
+  final AuthController _authController = Get.find();
   File? _img;
   final imagePicker = ImagePicker();
 
-  Future<void> selectImage(ImageSource imageSource) async {
+  Future<void> _selectImage(ImageSource imageSource) async {
     var pickedImage = await imagePicker.pickImage(source: imageSource);
     if (pickedImage != null) {
       setState(() {
         _img = File(pickedImage.path);
-        var name = basename(pickedImage.path);
-        var random = Random().nextInt(10000);
-        name = '$random$name';
-        Get.back();
-
-        // TOdo Upload to storage
       });
+      Get.back();
     }
   }
 
@@ -53,13 +49,13 @@ class _AddProfilePictureState extends State<AddProfilePicture> {
               _img == null
                   ? CircleAvatar(
                       radius: Dimensions.radius30 * 4,
-                      backgroundImage: NetworkImage(
-                          'https://www.maxpixel.net/static/photo/1x/Insta-Instagram-Instagram-Icon-User-3814081.png'),
+                      backgroundImage: const NetworkImage(stockPictureURL),
                     )
                   : CircleAvatar(
                       radius: Dimensions.radius30 * 2.2,
-                      backgroundImage: FileImage(_img!),
+                      backgroundImage: FileImage(_img as File),
                     ),
+              // Choose Image button
               MaterialButton(
                 padding: EdgeInsets.symmetric(
                     vertical: Dimensions.height10,
@@ -70,6 +66,7 @@ class _AddProfilePictureState extends State<AddProfilePicture> {
                     borderRadius:
                         BorderRadius.all(Radius.circular(Dimensions.radius15))),
                 onPressed: () {
+                  // Show Bottom sheet method
                   Get.bottomSheet(Container(
                     padding: EdgeInsets.symmetric(
                         vertical: Dimensions.height20,
@@ -93,7 +90,7 @@ class _AddProfilePictureState extends State<AddProfilePicture> {
                               children: [
                                 IconButton(
                                     onPressed: () async {
-                                      selectImage(ImageSource.gallery);
+                                      await _selectImage(ImageSource.gallery);
                                     },
                                     icon: const Icon(
                                       Icons.album_outlined,
@@ -109,7 +106,7 @@ class _AddProfilePictureState extends State<AddProfilePicture> {
                               children: [
                                 IconButton(
                                     onPressed: () async {
-                                      await selectImage(ImageSource.camera);
+                                      await _selectImage(ImageSource.camera);
                                     },
                                     icon: const Icon(
                                       Icons.camera_alt_outlined,
@@ -132,6 +129,28 @@ class _AddProfilePictureState extends State<AddProfilePicture> {
                   color: Colors.white,
                 ),
               ),
+              _img != null
+                  ? MaterialButton(
+                      padding: EdgeInsets.symmetric(
+                          vertical: Dimensions.height10,
+                          horizontal: Dimensions.width10),
+                      color: AppColors.lightGreen,
+                      elevation: 0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(Dimensions.radius15))),
+                      onPressed: () async {
+                        await _authController.uploadProfilePic(_img!);
+                      },
+                      child: const AppMediumText(
+                        text: 'Confirm',
+                        color: Colors.white,
+                      ),
+                    )
+                  : const SizedBox(
+                      height: 0,
+                    ),
+              // Skip Button
               MaterialButton(
                 padding: EdgeInsets.symmetric(
                     vertical: Dimensions.height10,
@@ -141,7 +160,7 @@ class _AddProfilePictureState extends State<AddProfilePicture> {
                 shape: RoundedRectangleBorder(
                     borderRadius:
                         BorderRadius.all(Radius.circular(Dimensions.radius15))),
-                onPressed: () {},
+                onPressed: () => Get.offAllNamed('/main'),
                 child: const AppMediumText(
                   text: 'Skip',
                   color: Colors.white,
