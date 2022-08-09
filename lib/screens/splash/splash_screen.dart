@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:shatla/controllers/auth_controller.dart';
 import 'package:shatla/routes/app_router.dart';
 
 import 'package:shatla/utils/dimensions.dart';
@@ -25,13 +26,15 @@ class _SplashPageState extends State<SplashScreen>
 
   @override
   void initState() {
+    AuthController authController = Get.find();
+    String initialRoute = authController.setInitialScreen();
     _loadResources();
     super.initState();
     _controller =
         AnimationController(vsync: this, duration: const Duration(seconds: 2))
           ..forward();
     _animation = CurvedAnimation(parent: _controller, curve: Curves.linear);
-    Timer(const Duration(seconds: 3), () => Get.toNamed(AppRouter.login));
+    Timer(const Duration(seconds: 3), () => Get.toNamed(initialRoute));
   }
 
   @override

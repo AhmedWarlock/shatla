@@ -15,7 +15,7 @@ class UserModel {
         'https://www.maxpixel.net/static/photo/1x/Insta-Instagram-Instagram-Icon-User-3814081.png',
   });
 
-  Map<String, String> toDocument() {
+  Map<String, String> toJson() {
     return {
       'name': name,
       'id': id,

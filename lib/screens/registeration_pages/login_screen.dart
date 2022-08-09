@@ -22,7 +22,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   //On button press function
   void _submit() async {
-    if (_formKey.currentState!.validate()) {}
+    if (_formKey.currentState!.validate()) {
+      _authController.signIn();
+    }
   }
 
   @override

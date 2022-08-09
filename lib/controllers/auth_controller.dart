@@ -12,7 +12,7 @@ class AuthController extends GetxController {
     required this.fireBaseRepo,
   });
   final FireBaseRepo fireBaseRepo;
-  late Rx<User> firebaseUser;
+  // late Rx<User> firebaseUser;
 
   TextEditingController emailController = TextEditingController();
 
@@ -20,19 +20,20 @@ class AuthController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
 
-  @override
-  void onReady() {
-    super.onReady();
-    firebaseUser = Rx<User>(auth.currentUser!);
-    firebaseUser.bindStream(auth.userChanges() as Stream<User>);
-    ever(firebaseUser, _setInitialScreen);
-  }
+  // @override
+  // void onReady() {
+  //   super.onReady();
+  //   firebaseUser = Rx<User>(auth.currentUser!);
+  //   firebaseUser.bindStream(auth.userChanges()??null);
+  //   ever(firebaseUser, setInitialScreen);
+  // }
 
-  _setInitialScreen(User user) {
-    if (user == null) {
-      Get.offAllNamed('/login');
+  String setInitialScreen() {
+    bool isLoggedIn = auth.currentUser != null;
+    if (isLoggedIn) {
+      return '/main';
     } else {
-      Get.offAllNamed('/main');
+      return '/login';
     }
   }
 

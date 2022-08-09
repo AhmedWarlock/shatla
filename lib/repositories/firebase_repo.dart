@@ -34,7 +34,7 @@ class FireBaseRepo {
       await firestoreUserRefrence.doc(id).get().then((userDoc) {
         final newUserMap =
             UserModel(name: name, phoneNum: phoneNum, id: id, email: email)
-                .toDocument();
+                .toJson();
         if (!userDoc.exists) {
           firestoreUserRefrence.doc(id).set(newUserMap);
         }
