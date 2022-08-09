@@ -1,4 +1,4 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserModel {
   final String name;
@@ -25,12 +25,12 @@ class UserModel {
     };
   }
 
-  // factory UserModel.fromSnapshot(DocumentSnapshot snapshot) {
-  //   return UserModel(
-  //       name: (snapshot.data() as Map)['name'],
-  //       email: (snapshot.data() as Map)['email'],
-  //       phoneNum: (snapshot.data() as Map)['phoneNum'],
-  //       id: (snapshot.data() as Map)['id'],
-  //       profileURL: (snapshot.data() as Map)['profileURL']);
-  // }
+  factory UserModel.fromJson(Map<String, dynamic> snapshot) {
+    return UserModel(
+        name: snapshot['name'],
+        email: snapshot['email'],
+        phoneNum: snapshot['phoneNum'],
+        id: snapshot['id'],
+        profileURL: snapshot['profileURL']);
+  }
 }

@@ -8,6 +8,7 @@ import 'package:shatla/widgets/app_text.dart';
 import 'package:get/get.dart';
 
 import '../../utils/dimensions.dart';
+import '../../widgets/show_loading.dart';
 
 class AddProfilePicture extends StatefulWidget {
   const AddProfilePicture({Key? key}) : super(key: key);

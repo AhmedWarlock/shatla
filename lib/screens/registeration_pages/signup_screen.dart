@@ -7,6 +7,7 @@ import 'package:shatla/utils/dimensions.dart';
 import 'package:shatla/widgets/app_text.dart';
 
 import '../../controllers/auth_controller.dart';
+import '../../widgets/show_loading.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -25,6 +26,8 @@ class _SignupScreenState extends State<SignupScreen> {
 
   void _submit() async {
     if (_formKey.currentState!.validate()) {
+      showLoading();
+
       _authController.signUp();
     }
   }

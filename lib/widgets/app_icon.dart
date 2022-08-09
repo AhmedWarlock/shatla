@@ -5,9 +5,11 @@ import 'package:shatla/utils/dimensions.dart';
 
 class AppIcon extends StatelessWidget {
   final IconData icon;
+  final void Function() onPressed;
 
   const AppIcon({
     Key? key,
+    required this.onPressed,
     required this.icon,
   }) : super(key: key);
 
@@ -21,9 +23,12 @@ class AppIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(Dimensions.height10 / 2),
       ),
       child: Center(
-          child: Icon(
-        icon,
-        size: Dimensions.isconSize24,
+          child: IconButton(
+        onPressed: onPressed,
+        icon: Icon(
+          icon,
+          size: Dimensions.isconSize24,
+        ),
       )),
     );
   }

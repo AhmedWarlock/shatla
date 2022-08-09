@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shatla/utils/colors.dart';
 import 'package:shatla/utils/dimensions.dart';
 import 'package:shatla/widgets/app_icon.dart';
@@ -34,11 +35,15 @@ class ProductScreen extends StatelessWidget {
             right: Dimensions.height20,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children: [
                 AppIcon(
                   icon: Icons.arrow_back_sharp,
+                  onPressed: () => Get.back(),
                 ),
-                AppIcon(icon: Icons.shopping_cart_sharp),
+                AppIcon(
+                  icon: Icons.shopping_cart_sharp,
+                  onPressed: () {},
+                ),
               ],
             ),
           ),
@@ -112,12 +117,9 @@ class ProductScreen extends StatelessWidget {
                   SizedBox(
                     width: Dimensions.width10 / 2,
                   ),
-                  Text('0',
-                  style: TextStyle(
-                    
-                    fontSize: Dimensions.font22
-
-                  ),
+                  Text(
+                    '0',
+                    style: TextStyle(fontSize: Dimensions.font22),
                   ),
                   SizedBox(
                     width: Dimensions.width10 / 2,

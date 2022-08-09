@@ -3,12 +3,11 @@ import 'dart:math';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart';
 import 'package:get/get.dart';
-import 'package:shatla/constants/controllers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:shatla/data/models/user_model.dart';
 import 'package:shatla/constants/firebase_consts.dart';
-import 'package:shatla/utils/sample_text.dart';
+
+import '../widgets/show_loading.dart';
 
 class FireBaseRepo {
   // Get Current  user id
@@ -20,11 +19,9 @@ class FireBaseRepo {
       required String phoneNum,
       required String email,
       required String password}) async {
-    print('CheckPoint1 ==================');
-
     try {
       // Firebase Create User
-      final credential = await auth.createUserWithEmailAndPassword(
+      await auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -42,12 +39,17 @@ class FireBaseRepo {
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        // todo Create snackbar
+        showSnackBar(
+            title: 'Error', message: 'The password provided is too weak.');
         print('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
+        showSnackBar(
+            title: 'Error',
+            message: 'The account already exists for that email.');
         print('The account already exists for that email.');
       }
     } catch (e) {
+      showSnackBar(title: 'Error', message: 'Something went wrong!');
       print(e);
     }
   }
@@ -62,21 +64,27 @@ class FireBaseRepo {
       Get.offAllNamed('/main');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        // todo Create snackbar
+        showSnackBar(title: 'Error', message: 'No user found for that email.');
 
         print('No user found for that email.');
       } else if (e.code == 'wrong-password') {
+        showSnackBar(
+            title: 'Error', message: 'Wrong password provided for that user.');
         print('Wrong password provided for that user.');
       }
     }
   }
 
   // Sign Out
-  Future<void> signOut() async => await auth.signOut();
+  Future<void> signOut() async {
+    await auth.signOut();
+    Get.offAllNamed('/login');
+  }
 
   Future<void> uploadProfilePic(File image) async {
     try {
-      // Todo Show loading Indicator
+      showLoading();
+
       final uId = await getUserId();
       // Upload to storage
       var name = basename(image.path);
@@ -89,8 +97,9 @@ class FireBaseRepo {
       await firestoreUserRefrence.doc(uId).update({'profileURL': picId});
       Get.offAllNamed('/main');
     } catch (e) {
-      print(e);
-      print('IMAGE IS NULL');
+      showSnackBar(
+          title: 'Something went Wrong!', message: "Couldn't upload picture");
+      print('=============$e==================');
     }
   }
 }

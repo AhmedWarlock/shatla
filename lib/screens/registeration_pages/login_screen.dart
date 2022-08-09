@@ -5,6 +5,7 @@ import 'package:shatla/utils/colors.dart';
 import 'package:shatla/utils/dimensions.dart';
 import 'package:get/get.dart';
 import 'package:shatla/widgets/app_text.dart';
+import 'package:shatla/widgets/show_loading.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -23,6 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
   //On button press function
   void _submit() async {
     if (_formKey.currentState!.validate()) {
+      showLoading();
       _authController.signIn();
     }
   }

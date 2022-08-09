@@ -35,6 +35,7 @@ class AccountContainer extends StatelessWidget {
       child: Row(
         children: [
           AppIcon(
+            onPressed: () {},
             icon: icon,
           ),
           SizedBox(

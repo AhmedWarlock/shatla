@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shatla/utils/sample_text.dart';
 import 'package:shatla/widgets/app_text.dart';
 
@@ -36,11 +37,15 @@ class InformationScreen extends StatelessWidget {
             right: Dimensions.height20,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
+              children: [
                 AppIcon(
                   icon: Icons.arrow_back_sharp,
+                  onPressed: () => Get.back(),
                 ),
-                AppIcon(icon: Icons.shopping_cart_sharp),
+                AppIcon(
+                  icon: Icons.shopping_cart_sharp,
+                  onPressed: () {},
+                ),
               ],
             ),
           ),

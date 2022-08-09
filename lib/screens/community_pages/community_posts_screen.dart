@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:shatla/utils/colors.dart';
 import 'package:shatla/utils/dimensions.dart';
 import 'package:shatla/widgets/app_text.dart';
+import 'package:shatla/widgets/nav_drawer.dart';
 
 class PostsScreen extends StatelessWidget {
   const PostsScreen({Key? key}) : super(key: key);
@@ -39,17 +40,9 @@ class PostsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const NavigationDrawerWidget(),
       backgroundColor: AppColors.greyColor,
       appBar: AppBar(
-        leading: Container(
-          padding: EdgeInsets.all(Dimensions.height10),
-          child: CircleAvatar(
-            radius: 30,
-            backgroundColor: Colors.white,
-            child: Icon(Icons.person,
-                size: Dimensions.isconSize24, color: Colors.grey),
-          ),
-        ),
         actions: [
           Container(
             padding: EdgeInsets.symmetric(horizontal: Dimensions.width5),

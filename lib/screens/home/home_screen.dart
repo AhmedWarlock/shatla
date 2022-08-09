@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:shatla/screens/home/components/title_more_btn.dart';
 
 import '../../utils/dimensions.dart';
+import '../../widgets/nav_drawer.dart';
 import 'components/home_cards.dart';
 import 'components/home_header.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,9 +13,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: const Icon(Icons.menu),
-      ),
+      appBar: AppBar(),
+      drawer: NavigationDrawerWidget(),
       body: SingleChildScrollView(
           child: Column(
         children: [
@@ -40,7 +41,9 @@ class HomeScreen extends StatelessWidget {
                   image: 'assets/images/product.jpg',
                   title: 'Aloe Vera',
                   subtitle: 'Subtitle',
-                  onPress: () {},
+                  onPress: () {
+                    Get.toNamed('/product');
+                  },
                   price: 440,
                   size: 0.4,
                 ),
@@ -79,7 +82,9 @@ class HomeScreen extends StatelessWidget {
                   image: 'assets/images/product.jpg',
                   title: 'Aloe Vera',
                   subtitle: 'Subtitle',
-                  onPress: () {},
+                  onPress: () {
+                    Get.toNamed('/info');
+                  },
                   price: 440,
                   size: 0.8,
                 ),
