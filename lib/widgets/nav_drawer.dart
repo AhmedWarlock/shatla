@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import '../controllers/auth_controller.dart';
-import '../utils/colors.dart';
-import '../utils/dimensions.dart';
-import 'app_text.dart';
+import 'package:shatla/controllers/auth_controller.dart';
+import 'package:shatla/utils/colors.dart';
+import 'package:shatla/utils/dimensions.dart';
+import 'package:shatla/widgets/app_text.dart';
 import 'package:get/get.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
-  const NavigationDrawerWidget({Key? key}) : super(key: key);
+  NavigationDrawerWidget({Key? key}) : super(key: key);
+  AuthController _authController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,11 @@ class NavigationDrawerWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildHeader(),
+              _buildHeader(
+                  url: _authController.profileURL ??
+                      'https://www.maxpixel.net/static/photo/1x/Insta-Instagram-Instagram-Icon-User-3814081.png',
+                  name: _authController.userName ?? 'UserName',
+                  email: _authController.email ?? 'email'),
               _buildDrawerItem(
                   icon: Icons.home_filled,
                   name: 'Home',
@@ -72,7 +77,9 @@ Widget _buildDrawerItem(
   );
 }
 
-Widget _buildHeader() => InkWell(
+Widget _buildHeader(
+        {required String url, required String name, required String email}) =>
+    InkWell(
       onTap: () => Get.offNamed('account'),
       child: Container(
         padding: EdgeInsets.symmetric(vertical: Dimensions.height45),
@@ -81,13 +88,14 @@ Widget _buildHeader() => InkWell(
             CircleAvatar(
               radius: Dimensions.height30,
               backgroundColor: Colors.white,
+              backgroundImage: NetworkImage(url),
             ),
             SizedBox(width: Dimensions.width10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const AppLargeText(
-                  text: 'Name',
+                AppLargeText(
+                  text: name,
                   color: AppColors.greyColor,
                 ),
                 const SizedBox(height: 4),

@@ -1,6 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shatla/constants/firebase_consts.dart';
+import 'package:shatla/controllers/auth_controller.dart';
+import 'package:shatla/utils/colors.dart';
+import 'package:shatla/utils/dimensions.dart';
+import 'package:shatla/widgets/account_container.dart';
 import 'package:shatla/widgets/nav_drawer.dart';
+import 'package:shatla/widgets/show_loading.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({Key? key}) : super(key: key);
@@ -29,6 +36,7 @@ class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
         appBar: AppBar(),
         drawer: const NavigationDrawerWidget(),
         body: userData!.isEmpty
@@ -93,5 +101,10 @@ class _AccountScreenState extends State<AccountScreen> {
                   )
                 ],
               ));
+=======
+      appBar: AppBar(),
+      drawer: NavigationDrawerWidget(),
+    );
+>>>>>>> d9e0c4b024771742348000486a096ed64e9abb99
   }
 }
