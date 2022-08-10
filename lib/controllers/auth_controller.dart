@@ -48,10 +48,10 @@ class AuthController extends GetxController {
 
   Future<void> signOut() async => await fireBaseRepo.signOut();
 
-  Future<void> uploadProfilePic(
-          {required File image, required String imageName}) async =>
-      await fireBaseRepo.uploadProfilePic(image: image, imageName: imageName);
-
+  Future<String> uploadProfilePic(
+          {required File image}) async {
+      return await fireBaseRepo.uploadImageToStorage(childName: "profilePics", file: image, isPost: false);
+          }
   // Clear text Controller
   void _clearControllers() {
     emailController.clear();
