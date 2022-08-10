@@ -36,6 +36,7 @@ class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
         appBar: AppBar(),
         drawer: const NavigationDrawerWidget(),
         body: userData!.isEmpty
@@ -100,5 +101,10 @@ class _AccountScreenState extends State<AccountScreen> {
                   )
                 ],
               ));
+=======
+      appBar: AppBar(),
+      drawer: NavigationDrawerWidget(),
+    );
+>>>>>>> d9e0c4b024771742348000486a096ed64e9abb99
   }
 }

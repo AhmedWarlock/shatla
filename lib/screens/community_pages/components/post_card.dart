@@ -1,24 +1,18 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shatla/screens/community_pages/view_comment_screen.dart';
 
 import '../../../utils/colors.dart';
 import '../../../utils/dimensions.dart';
 import '../../../widgets/app_text.dart';
 
 class PostCardWidget extends StatelessWidget {
-  const PostCardWidget(
-      {Key? key,
-      required this.likes,
-      required this.userName,
-      required this.pictureUrl,
-      required this.profileUrl,
-      required this.text})
-      : super(key: key);
-  final int likes;
-  final String userName;
-  final String pictureUrl;
-  final String profileUrl;
-  final String text;
+  const PostCardWidget({
+    Key? key,
+    required this.snapshot,
+  }) : super(key: key);
+  final QueryDocumentSnapshot snapshot;
 
   void _showPicture() {
     Get.defaultDialog(
@@ -33,7 +27,8 @@ class PostCardWidget extends StatelessWidget {
               borderRadius:
                   BorderRadius.all(Radius.circular(Dimensions.radius15)),
               image: DecorationImage(
-                  image: NetworkImage(pictureUrl), fit: BoxFit.cover)),
+                  image: NetworkImage(snapshot['pictureURL']),
+                  fit: BoxFit.cover)),
           child: Align(
             alignment: Alignment.topRight,
             child: IconButton(
@@ -66,7 +61,7 @@ class PostCardWidget extends StatelessWidget {
                 backgroundColor: Colors.grey,
               ),
               title: AppMediumText(
-                text: userName,
+                text: snapshot['user'],
               ),
               subtitle: AppRegText(text: '3 hours ago'),
               trailing: IconButton(
@@ -79,7 +74,7 @@ class PostCardWidget extends StatelessWidget {
                   horizontal: Dimensions.width10,
                   vertical: Dimensions.height10),
               child: AppRegText(
-                text: text,
+                text: snapshot['text'],
                 maxLines: 1,
               ),
             ),
@@ -91,7 +86,8 @@ class PostCardWidget extends StatelessWidget {
               height: Dimensions.height120 * 1.1,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: NetworkImage(pictureUrl), fit: BoxFit.cover),
+                      image: NetworkImage(snapshot['pictureURL']),
+                      fit: BoxFit.cover),
                   color: AppColors.greyColor,
                   borderRadius: BorderRadius.all(
                     Radius.circular(Dimensions.radius15),
@@ -103,14 +99,14 @@ class PostCardWidget extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  AppRegText(text: likes.toString()),
+                  AppRegText(text: snapshot['likes'].toString()),
                   IconButton(
                       onPressed: () {},
                       icon: const Icon(Icons.thumb_up_alt_outlined)),
                 ],
               ),
               IconButton(
-                  onPressed: () => Get.toNamed('/comment'),
+                  onPressed: () => Get.to(CommentView(snapshot: snapshot)),
                   icon: const Icon(Icons.comment_outlined)),
               IconButton(
                   onPressed: () {}, icon: const Icon(Icons.bookmark_outline)),

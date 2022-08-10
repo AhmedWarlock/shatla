@@ -16,6 +16,30 @@ class FireBaseRepo {
   // Get Current  user id
   Future<String> getUserId() async => auth.currentUser!.uid;
 
+  Future<String> getUserInfo(
+      {bool isName = true, bool isPic = false, bool isEmail = false}) async {
+    final String uID = await getUserId();
+    if (isName) {
+      String userName = await firestoreUserRefrence
+          .doc(uID)
+          .get()
+          .then((snapShot) => snapShot['name']);
+      return userName;
+    } else if (isPic) {
+      String url = await firestoreUserRefrence
+          .doc(uID)
+          .get()
+          .then((snapShot) => snapShot['profileURL']);
+      return url;
+    } else {
+      String email = await firestoreUserRefrence
+          .doc(uID)
+          .get()
+          .then((snapShot) => snapShot['email']);
+      return email;
+    }
+  }
+
   // Sign Up new user
   Future<void> signUp(
       {required String name,
@@ -167,12 +191,9 @@ return await ref.getDownloadURL();
   }) async {
     try {
       showLoading();
-
       final uId = await getUserId();
-
       // Upload to storage
       var random = Random().nextInt(100000);
-
       Reference storageRef =
           fireStorage.ref('posts').child('$random$imageName');
       await storageRef.putFile(image);
@@ -195,6 +216,7 @@ return await ref.getDownloadURL();
     }
   }
 
+<<<<<<< HEAD
   Future<void> addProduct({
     required String name,
     required String description,
@@ -238,3 +260,32 @@ showLoading();
     
   }
 
+=======
+  Future<void> uploadComment(
+      {required String postID,
+      required String userName,
+      required String text}) async {
+    try {
+      showLoading();
+      final userID = await getUserId();
+      await firestore
+          .collection('posts')
+          .doc(postID)
+          .collection('comments')
+          .doc()
+          .set({
+        'text': text,
+        'userName': userName,
+        'likes': 0,
+        'user': userID,
+        'date': Timestamp.now().toDate().toString()
+      });
+    } catch (e) {
+      Get.back();
+      showSnackBar(
+          title: 'Something went Wrong!', message: "Couldn't upload comment");
+      print('=============$e==================');
+    }
+  }
+}
+>>>>>>> d9e0c4b024771742348000486a096ed64e9abb99

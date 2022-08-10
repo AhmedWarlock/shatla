@@ -15,7 +15,7 @@ class PostsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const NavigationDrawerWidget(),
+      drawer: NavigationDrawerWidget(),
       backgroundColor: AppColors.greyColor,
       appBar: AppBar(
         actions: [
@@ -52,11 +52,8 @@ class PostsScreen extends StatelessWidget {
               itemBuilder: (context, i) {
                 QueryDocumentSnapshot post = snapshot.data!.docs[i];
                 return PostCardWidget(
-                    likes: post['likes'],
-                    userName: post['user'],
-                    pictureUrl: post['pictureURL'],
-                    profileUrl: 'profileUrl',
-                    text: post['text']);
+                  snapshot: post,
+                );
               },
             );
           }
