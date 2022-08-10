@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shatla/data/models/user_model.dart';
 import 'package:shatla/constants/firebase_consts.dart';
+import 'package:uuid/uuid.dart';
 
 import '../widgets/show_loading.dart';
 
@@ -119,29 +120,54 @@ class FireBaseRepo {
     Get.offAllNamed('/login');
   }
 
-// Upload Profile picture
-  Future<void> uploadProfilePic(
-      {required File image, required String imageName}) async {
-    try {
-      showLoading();
+  // Future<void> uploadProfilePic(
+  //     {required File image, required String imageName}) async {
+  //   try {
+  //     showLoading();
 
-      final uId = await getUserId();
+  //     final uId = await getUserId();
 
-      // Upload to storage
-      var random = Random().nextInt(100000);
+  //     // Upload to storage
+  //     var random = Random().nextInt(100000);
 
-      Reference storageRef =
-          fireStorage.ref('Profile_images').child('$random$imageName');
-      await storageRef.putFile(image);
-      // Save in FireStore
-      String picId = await storageRef.getDownloadURL();
-      await firestoreUserRefrence.doc(uId).update({'profileURL': picId});
-      Get.offAllNamed('/main');
-    } catch (e) {
-      Get.back();
+  //     Reference storageRef =
+  //         fireStorage.ref('Profile_images').child('$random$imageName');
+  //     await storageRef.putFile(image);
+  //     // Save in FireStore
+  //     String picId = await storageRef.getDownloadURL();
+  //     await firestoreUserRefrence.doc(uId).update({'profileURL': picId});
+  //     Get.offAllNamed('/main');
+  //   } catch (e) {
+  //     Get.back();
+  //     showSnackBar(
+  //         title: 'Something went Wrong!', message: "Couldn't upload picture");
+  //     print('=============$e==================');
+  //   }
+  // }
+
+
+  //upload image to storage
+Future<String> uploadImageToStorage({required String childName , required File file , required bool isPost} ) async {
+  try{
+    showLoading();
+    Reference ref = FirebaseStorage.instance.ref().child(childName).child(auth.currentUser!.uid);
+
+if(isPost){
+  String id = const Uuid().v1();
+  ref = ref.child(id);
+}
+
+UploadTask uploadTask = ref.putFile(file);
+TaskSnapshot taskSnapshot = await uploadTask;
+return await ref.getDownloadURL();
+}
+
+  
+  catch(e){
       showSnackBar(
           title: 'Something went Wrong!', message: "Couldn't upload picture");
       print('=============$e==================');
+      return "";
     }
   }
 
@@ -237,3 +263,4 @@ class FireBaseRepo {
   //   }
   // }
 }
+      }}

@@ -34,7 +34,7 @@ class HomeItemCardsWidget extends StatelessWidget {
             height: Dimensions.height50 * 3,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(image), fit: BoxFit.cover),
+                    image: NetworkImage(image), fit: BoxFit.cover),
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(Dimensions.radius15),
                   topRight: Radius.circular(Dimensions.radius15),
