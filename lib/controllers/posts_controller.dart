@@ -25,4 +25,12 @@ class PostsController extends GetxController {
         text: postController.text,
         userName: userName,
       );
+
+  Future<void> uploadComment(
+      {required String userName, required String postID}) async {
+    if (!commentController.text.isEmpty) {
+      fireBaseRepo.uploadComment(
+          postID: postID, userName: userName, text: commentController.text);
+    }
+  }
 }

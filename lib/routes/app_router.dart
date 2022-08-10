@@ -24,7 +24,6 @@ class AppRouter {
   static const String product = '/product';
   static const String info = '/info';
   static const String posts = '/posts';
-  static const String comment = '/comment';
   static const String addPost = '/add_post';
   static const String addProduct = '/add_product';
   static const String splash = '/splash';
@@ -40,7 +39,6 @@ class AppRouter {
   static String getProdcut() => product;
   static String getInfo() => info;
   static String getPosts() => posts;
-  static String getComment() => comment;
   static String getAddPost() => addPost;
   static String getAddProduct() => addProduct;
   static String getSplash() => splash;
@@ -57,7 +55,6 @@ class AppRouter {
     GetPage(name: product, page: () => const ProductScreen()),
     GetPage(name: info, page: () => const InformationScreen()),
     GetPage(name: posts, page: () => const PostsScreen()),
-    GetPage(name: comment, page: () => const CommentView()),
     GetPage(name: addPost, page: () => AddPostScreen()),
     GetPage(name: addProduct, page: () => const AddProductScreen()),
     GetPage(name: splash, page: () => const SplashScreen()),

@@ -19,14 +19,17 @@ class AuthController extends GetxController {
   TextEditingController passwordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
+  String? userName;
+  String? profileURL;
+  String? email;
 
-  // @override
-  // void onReady() {
-  //   super.onReady();
-  //   firebaseUser = Rx<User>(auth.currentUser!);
-  //   firebaseUser.bindStream(auth.userChanges()??null);
-  //   ever(firebaseUser, setInitialScreen);
-  // }
+  @override
+  void onReady() async {
+    super.onReady();
+    userName = await getUserInfo();
+    profileURL = await getUserInfo(isName: false, isPic: true);
+    email = await getUserInfo(isName: false, isEmail: true);
+  }
 
   String setInitialScreen() {
     bool isLoggedIn = auth.currentUser != null;
@@ -47,6 +50,13 @@ class AuthController extends GetxController {
       password: passwordController.text);
 
   Future<void> signOut() async => await fireBaseRepo.signOut();
+
+  Future<String> getUserInfo(
+          {bool isName = true,
+          bool isPic = false,
+          bool isEmail = false}) async =>
+      await fireBaseRepo.getUserInfo(
+          isPic: isPic, isEmail: isEmail, isName: isName);
 
   Future<void> uploadProfilePic(
           {required File image, required String imageName}) async =>

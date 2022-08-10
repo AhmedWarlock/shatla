@@ -8,7 +8,7 @@ class AccountScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      drawer: const NavigationDrawerWidget(),
+      drawer: NavigationDrawerWidget(),
     );
   }
 }

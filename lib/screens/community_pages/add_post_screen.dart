@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shatla/controllers/auth_controller.dart';
 import 'package:shatla/controllers/posts_controller.dart';
 import 'package:shatla/utils/colors.dart';
 import 'package:shatla/utils/dimensions.dart';
@@ -18,7 +19,8 @@ class AddPostScreen extends StatefulWidget {
 }
 
 class _AddPostScreenState extends State<AddPostScreen> {
-  PostsController postsController = Get.find();
+  final PostsController _postsController = Get.find();
+  final AuthController _authController = Get.find();
 
   File? _file;
   String? _pathName;
@@ -39,10 +41,13 @@ class _AddPostScreenState extends State<AddPostScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () => postsController.uploadPost(
-            image: _file as File,
-            imageName: _pathName as String,
-            userName: 'userName'),
+        onPressed: () async {
+          String userName = await _authController.getUserInfo();
+          await _postsController.uploadPost(
+              image: _file as File,
+              imageName: _pathName as String,
+              userName: userName);
+        },
         child: const Icon(Icons.add),
       ),
       body: SingleChildScrollView(
@@ -79,7 +84,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     TextField(
-                      controller: postsController.postController,
+                      controller: _postsController.postController,
                       maxLines: 8,
                       decoration: const InputDecoration(
                         enabledBorder: OutlineInputBorder(
