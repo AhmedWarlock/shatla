@@ -145,25 +145,27 @@ class FireBaseRepo {
   //   }
   // }
 
-
   //upload image to storage
-Future<String> uploadImageToStorage({required String childName , required File file , required bool isPost} ) async {
-  try{
-    showLoading();
-    Reference ref = FirebaseStorage.instance.ref().child(childName).child(auth.currentUser!.uid);
+  Future<String> uploadImageToStorage(
+      {required String childName,
+      required File file,
+      required bool isPost}) async {
+    try {
+      showLoading();
+      Reference ref = FirebaseStorage.instance
+          .ref()
+          .child(childName)
+          .child(auth.currentUser!.uid);
 
-if(isPost){
-  String id = const Uuid().v1();
-  ref = ref.child(id);
-}
+      if (isPost) {
+        String id = const Uuid().v1();
+        ref = ref.child(id);
+      }
 
-UploadTask uploadTask = ref.putFile(file);
-TaskSnapshot taskSnapshot = await uploadTask;
-return await ref.getDownloadURL();
-}
-
-  
-  catch(e){
+      UploadTask uploadTask = ref.putFile(file);
+      TaskSnapshot taskSnapshot = await uploadTask;
+      return await ref.getDownloadURL();
+    } catch (e) {
       showSnackBar(
           title: 'Something went Wrong!', message: "Couldn't upload picture");
       print('=============$e==================');
@@ -263,4 +265,3 @@ return await ref.getDownloadURL();
   //   }
   // }
 }
-      }}
