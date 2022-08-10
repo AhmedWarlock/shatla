@@ -4,8 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../repositories/firebase_repo.dart';
-import '../constants/firebase_consts.dart';
+import 'package:shatla/repositories/firebase_repo.dart';
+import 'package:shatla/constants/firebase_consts.dart';
 
 class AuthController extends GetxController {
   AuthController({
@@ -19,14 +19,17 @@ class AuthController extends GetxController {
   TextEditingController passwordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
+  String? userName;
+  String? profileURL;
+  String? email;
 
-  // @override
-  // void onReady() {
-  //   super.onReady();
-  //   firebaseUser = Rx<User>(auth.currentUser!);
-  //   firebaseUser.bindStream(auth.userChanges()??null);
-  //   ever(firebaseUser, setInitialScreen);
-  // }
+  @override
+  void onReady() async {
+    super.onReady();
+    userName = await getUserInfo();
+    profileURL = await getUserInfo(isName: false, isPic: true);
+    email = await getUserInfo(isName: false, isEmail: true);
+  }
 
   String setInitialScreen() {
     bool isLoggedIn = auth.currentUser != null;
@@ -48,10 +51,17 @@ class AuthController extends GetxController {
 
   Future<void> signOut() async => await fireBaseRepo.signOut();
 
-  Future<String> uploadProfilePic(
-          {required File image}) async {
-      return await fireBaseRepo.uploadImageToStorage(childName: "profilePics", file: image, isPost: false);
-          }
+  Future<String> getUserInfo(
+          {bool isName = true,
+          bool isPic = false,
+          bool isEmail = false}) async =>
+      await fireBaseRepo.getUserInfo(
+          isPic: isPic, isEmail: isEmail, isName: isName);
+
+  Future<void> uploadProfilePic(
+          {required File image, required String imageName}) async =>
+      await fireBaseRepo.uploadProfilePic(image: image, imageName: imageName);
+
   // Clear text Controller
   void _clearControllers() {
     emailController.clear();

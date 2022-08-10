@@ -10,7 +10,7 @@ import 'package:shatla/widgets/app_text.dart';
 import 'package:get/get.dart';
 import 'package:path/path.dart';
 
-import '../../utils/dimensions.dart';
+import '../../../dimensions.dart';
 import '../../widgets/show_loading.dart';
 
 class AddProfilePicture extends StatefulWidget {
@@ -146,14 +146,18 @@ class _AddProfilePictureState extends State<AddProfilePicture> {
                           borderRadius: BorderRadius.all(
                               Radius.circular(Dimensions.radius15))),
                       onPressed: () async {
-                        String photoURL = await _authController.uploadProfilePic(
-                            image: _img as File,
-                           );
-                        
-                           firestore.collection("users").doc(auth.currentUser!.uid).update({
-                           "photoURL" : photoURL,
-                           });
-                           Get.offAllNamed('/login');
+                        String photoURL =
+                            await _authController.uploadProfilePic(
+                          image: _img as File,
+                        );
+
+                        firestore
+                            .collection("users")
+                            .doc(auth.currentUser!.uid)
+                            .update({
+                          "photoURL": photoURL,
+                        });
+                        Get.offAllNamed('/login');
                       },
                       child: const AppMediumText(
                         text: 'Confirm',
