@@ -12,7 +12,6 @@ class AuthController extends GetxController {
     required this.fireBaseRepo,
   });
   final FireBaseRepo fireBaseRepo;
-  // late Rx<User> firebaseUser;
 
   TextEditingController emailController = TextEditingController();
 

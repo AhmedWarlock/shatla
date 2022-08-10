@@ -119,6 +119,7 @@ class FireBaseRepo {
     Get.offAllNamed('/login');
   }
 
+// Upload Profile picture
   Future<void> uploadProfilePic(
       {required File image, required String imageName}) async {
     try {
