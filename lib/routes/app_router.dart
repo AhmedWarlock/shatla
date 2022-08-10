@@ -1,18 +1,18 @@
 import 'package:get/get.dart';
-import 'package:shatla/screens/account/account_screen.dart';
-import 'package:shatla/screens/add_product_screen.dart';
-import 'package:shatla/screens/community_pages/add_post_screen.dart';
-import 'package:shatla/screens/cart/cart_screen.dart';
-import 'package:shatla/screens/community_pages/community_posts_screen.dart';
-import 'package:shatla/screens/community_pages/view_comment_screen.dart';
-import 'package:shatla/screens/home/home_screen.dart';
-import 'package:shatla/screens/information_screen.dart';
-import 'package:shatla/screens/onboarding_screen.dart';
-import 'package:shatla/screens/product_screen.dart';
-import 'package:shatla/screens/registeration_pages/add_profile_pic.dart';
-import 'package:shatla/screens/registeration_pages/login_screen.dart';
-import 'package:shatla/screens/registeration_pages/signup_screen.dart';
-import 'package:shatla/screens/splash/splash_screen.dart';
+import '../screens/account/account_screen.dart';
+import '../screens/add_product_screen.dart';
+import '../screens/community_pages/add_post_screen.dart';
+import '../screens/cart/cart_screen.dart';
+import '../screens/community_pages/community_posts_screen.dart';
+import '../screens/community_pages/view_comment_screen.dart';
+import '../screens/home/home_screen.dart';
+import '../screens/information_screen.dart';
+import '../screens/onboarding_screen.dart';
+import '../screens/product_screen.dart';
+import '../screens/registeration_pages/add_profile_pic.dart';
+import '../screens/registeration_pages/login_screen.dart';
+import '../screens/registeration_pages/signup_screen.dart';
+import '../screens/splash/splash_screen.dart';
 
 class AppRouter {
   //routes names
@@ -24,6 +24,7 @@ class AppRouter {
   static const String product = '/product';
   static const String info = '/info';
   static const String posts = '/posts';
+  static const String comment = '/comment';
   static const String addPost = '/add_post';
   static const String addProduct = '/add_product';
   static const String splash = '/splash';
@@ -39,6 +40,7 @@ class AppRouter {
   static String getProdcut() => product;
   static String getInfo() => info;
   static String getPosts() => posts;
+  static String getComment() => comment;
   static String getAddPost() => addPost;
   static String getAddProduct() => addProduct;
   static String getSplash() => splash;
@@ -55,6 +57,7 @@ class AppRouter {
     GetPage(name: product, page: () => const ProductScreen()),
     GetPage(name: info, page: () => const InformationScreen()),
     GetPage(name: posts, page: () => const PostsScreen()),
+    GetPage(name: comment, page: () => const CommentView()),
     GetPage(name: addPost, page: () => AddPostScreen()),
     GetPage(name: addProduct, page: () => const AddProductScreen()),
     GetPage(name: splash, page: () => const SplashScreen()),
