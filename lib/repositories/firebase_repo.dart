@@ -14,30 +14,6 @@ class FireBaseRepo {
   // Get Current  user id
   Future<String> getUserId() async => auth.currentUser!.uid;
 
-  Future<String> getUserInfo(
-      {bool isName = true, bool isPic = false, bool isEmail = false}) async {
-    final String uID = await getUserId();
-    if (isName) {
-      String userName = await firestoreUserRefrence
-          .doc(uID)
-          .get()
-          .then((snapShot) => snapShot['name']);
-      return userName;
-    } else if (isPic) {
-      String url = await firestoreUserRefrence
-          .doc(uID)
-          .get()
-          .then((snapShot) => snapShot['profileURL']);
-      return url;
-    } else {
-      String email = await firestoreUserRefrence
-          .doc(uID)
-          .get()
-          .then((snapShot) => snapShot['email']);
-      return email;
-    }
-  }
-
   // Sign Up new user
   Future<void> signUp(
       {required String name,
@@ -119,30 +95,61 @@ class FireBaseRepo {
     Get.offAllNamed('/login');
   }
 
-  Future<void> uploadProfilePic(
-      {required File image, required String imageName}) async {
-    try {
-      showLoading();
+  // Future<void> uploadProfilePic(
+  //     {required File image, required String imageName}) async {
+  //   try {
+  //     showLoading();
+
+  //     final uId = await getUserId();
+
+  //     // Upload to storage
+  //     var random = Random().nextInt(100000);
+
+  //     Reference storageRef =
+  //         fireStorage.ref('Profile_images').child('$random$imageName');
+  //     await storageRef.putFile(image);
+  //     // Save in FireStore
+  //     String picId = await storageRef.getDownloadURL();
+  //     await firestoreUserRefrence.doc(uId).update({'profileURL': picId});
+  //     Get.offAllNamed('/main');
+  //   } catch (e) {
+  //     Get.back();
+  //     showSnackBar(
+  //         title: 'Something went Wrong!', message: "Couldn't upload picture");
+  //     print('=============$e==================');
+  //   }
+  // }
+
+
+
+//upload image to storage
+Future<String> uploadImageToStorage({required String childName , required File file , required bool isPost} ) async {
+  try{
+    showLoading();
+    Reference ref = FirebaseStorage.instance.ref().child(childName).child(auth.currentUser!.uid);
 
       final uId = await getUserId();
 
       // Upload to storage
       var random = Random().nextInt(100000);
 
-      Reference storageRef =
-          fireStorage.ref('Profile_images').child('$random$imageName');
-      await storageRef.putFile(image);
-      // Save in FireStore
-      String picId = await storageRef.getDownloadURL();
-      await firestoreUserRefrence.doc(uId).update({'profileURL': picId});
-      Get.offAllNamed('/main');
-    } catch (e) {
-      Get.back();
+  catch(e){
       showSnackBar(
           title: 'Something went Wrong!', message: "Couldn't upload picture");
       print('=============$e==================');
+      return "";
     }
   }
+
+
+
+
+
+
+
+
+
+
 
   Future<void> uploadPost({
     required File image,
@@ -152,7 +159,9 @@ class FireBaseRepo {
   }) async {
     try {
       showLoading();
+
       final uId = await getUserId();
+
       // Upload to storage
       var random = Random().nextInt(100000);
 

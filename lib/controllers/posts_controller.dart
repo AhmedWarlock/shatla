@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:shatla/repositories/firebase_repo.dart';
+import '../repositories/firebase_repo.dart';
 
 class PostsController extends GetxController {
   final FireBaseRepo fireBaseRepo;

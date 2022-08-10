@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shatla/utils/dimensions.dart';
+import '../../dimensions.dart';
 import 'package:shatla/widgets/app_icon.dart';
 
 class AccountContainer extends StatelessWidget {
@@ -16,7 +16,10 @@ class AccountContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: Dimensions.height20),
+      margin: EdgeInsets.only(
+          bottom: Dimensions.height15,
+          left: Dimensions.height15,
+          right: Dimensions.height15),
       padding: EdgeInsets.only(
           top: Dimensions.height10,
           left: Dimensions.width20,
@@ -41,7 +44,10 @@ class AccountContainer extends StatelessWidget {
           SizedBox(
             width: Dimensions.width20,
           ),
-          Text(text),
+          Text(
+            text,
+            style: TextStyle(fontSize: Dimensions.font20),
+          ),
         ],
       ),
     );

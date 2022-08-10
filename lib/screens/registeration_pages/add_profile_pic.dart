@@ -1,6 +1,8 @@
 import 'dart:io';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:shatla/constants/firebase_consts.dart';
 import 'package:shatla/controllers/auth_controller.dart';
 import 'package:shatla/utils/colors.dart';
 import 'package:shatla/utils/sample_text.dart';
@@ -8,7 +10,7 @@ import 'package:shatla/widgets/app_text.dart';
 import 'package:get/get.dart';
 import 'package:path/path.dart';
 
-import '../../utils/dimensions.dart';
+import '../../../dimensions.dart';
 import '../../widgets/show_loading.dart';
 
 class AddProfilePicture extends StatefulWidget {
@@ -144,9 +146,18 @@ class _AddProfilePictureState extends State<AddProfilePicture> {
                           borderRadius: BorderRadius.all(
                               Radius.circular(Dimensions.radius15))),
                       onPressed: () async {
-                        await _authController.uploadProfilePic(
-                            image: _img as File,
-                            imageName: _pathName.toString());
+                        String photoURL =
+                            await _authController.uploadProfilePic(
+                          image: _img as File,
+                        );
+
+                        firestore
+                            .collection("users")
+                            .doc(auth.currentUser!.uid)
+                            .update({
+                          "photoURL": photoURL,
+                        });
+                        Get.offAllNamed('/login');
                       },
                       child: const AppMediumText(
                         text: 'Confirm',
@@ -166,7 +177,7 @@ class _AddProfilePictureState extends State<AddProfilePicture> {
                 shape: RoundedRectangleBorder(
                     borderRadius:
                         BorderRadius.all(Radius.circular(Dimensions.radius15))),
-                onPressed: () => Get.offAllNamed('/main'),
+                onPressed: () => Get.offAllNamed('/login'),
                 child: const AppMediumText(
                   text: 'Skip',
                   color: Colors.white,
