@@ -31,6 +31,7 @@ class PostsController extends GetxController {
     if (!commentController.text.isEmpty) {
       fireBaseRepo.uploadComment(
           postID: postID, userName: userName, text: commentController.text);
+      commentController.clear();
     }
   }
 }

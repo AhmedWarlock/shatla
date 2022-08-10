@@ -98,8 +98,8 @@ class CommentView extends StatelessWidget {
         decoration: BoxDecoration(
             color: AppColors.lightGreen,
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(Dimensions.radius30),
-              topRight: Radius.circular(Dimensions.radius30),
+              topLeft: Radius.circular(Dimensions.radius20),
+              topRight: Radius.circular(Dimensions.radius20),
             )),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

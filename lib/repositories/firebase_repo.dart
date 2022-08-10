@@ -155,6 +155,7 @@ class FireBaseRepo {
       final uId = await getUserId();
       // Upload to storage
       var random = Random().nextInt(100000);
+
       Reference storageRef =
           fireStorage.ref('posts').child('$random$imageName');
       await storageRef.putFile(image);
@@ -177,6 +178,8 @@ class FireBaseRepo {
     }
   }
 
+  // Upload Comment
+
   Future<void> uploadComment(
       {required String postID,
       required String userName,
@@ -196,6 +199,7 @@ class FireBaseRepo {
         'user': userID,
         'date': Timestamp.now().toDate().toString()
       });
+      Get.back();
     } catch (e) {
       Get.back();
       showSnackBar(
@@ -203,4 +207,32 @@ class FireBaseRepo {
       print('=============$e==================');
     }
   }
+
+  // Like Post
+  // Future<void> likePost({required String postID}) async {
+  //   final String userID = await getUserId();
+  //   bool isLiked = await firestoreUserRefrence
+  //       .doc(userID)
+  //       .collection('likedPosts')
+  //       .doc(postID)
+  //       .get()
+  //       .then((value) => value.exists);
+
+  //   if (!isLiked) {
+  //     await firestoreUserRefrence
+  //         .doc(userID)
+  //         .collection('likedPosts')
+  //         .doc(postID)
+  //         .set({});
+  //     final int likes = await firestore
+  //         .collection('posts')
+  //         .doc(postID)
+  //         .get()
+  //         .then((value) => value['likes']);
+  //     await firestore
+  //         .collection('posts')
+  //         .doc(postID)
+  //         .update({'likes': likes + 1});
+  //   }
+  // }
 }
