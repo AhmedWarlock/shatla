@@ -83,6 +83,9 @@ class HomeScreen extends StatelessWidget {
           SizedBox(
             height: Dimensions.height10,
           ),
+          SizedBox(
+            height: Dimensions.height10,
+          ),
           TitlewithMorebtnWidget(title: 'Non Flowering', onMoreTap: () {}),
           SizedBox(
             height: Dimensions.height10,
