@@ -1,14 +1,19 @@
+import 'dart:math';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shatla/utils/sample_text.dart';
 import 'package:shatla/widgets/app_text.dart';
+import 'package:shatla/widgets/underlined_title.dart';
 
 import '../utils/colors.dart';
 import '../utils/dimensions.dart';
 import '../widgets/app_icon.dart';
 
 class InformationScreen extends StatelessWidget {
-  const InformationScreen({Key? key}) : super(key: key);
+  const InformationScreen({Key? key, required this.snapshot}) : super(key: key);
+  final QueryDocumentSnapshot snapshot;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +27,9 @@ class InformationScreen extends StatelessWidget {
             child: Container(
               height: Dimensions.productImgHeight,
               width: double.maxFinite,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/images/product.jpg"),
+                  image: NetworkImage(snapshot['url']),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -67,99 +72,55 @@ class InformationScreen extends StatelessWidget {
                     topLeft: Radius.circular(Dimensions.radius30 * 1.2),
                     topRight: Radius.circular(Dimensions.radius30 * 1.2),
                   ),
-                  color: Colors.white),
+                  color: AppColors.greyColor),
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const AppMediumText(
-                      text: 'Light ',
-                      color: AppColors.darkGreyColor,
-                    ),
+                    const UnderLinedTitleWidget(
+                        title: 'Sun Light ', icon: Icons.wb_sunny_outlined),
                     SizedBox(
                       height: Dimensions.height10,
                     ),
-                    AppRegText(text: sampleText),
+                    AppRegText(text: snapshot['sunLight']),
                     SizedBox(
                       height: Dimensions.height5,
                     ),
-                    const AppMediumText(
-                      text: 'Water',
-                      color: AppColors.darkGreyColor,
-                    ),
+                    const UnderLinedTitleWidget(
+                        title: 'Irrigation', icon: Icons.water_drop_outlined),
                     SizedBox(
                       height: Dimensions.height10,
                     ),
-                    AppRegText(text: sampleText),
+                    AppRegText(text: snapshot['irrigation']),
                     SizedBox(
                       height: Dimensions.height5,
                     ),
-                    const AppMediumText(
-                      text: 'Fertilizer',
-                      color: AppColors.darkGreyColor,
-                    ),
+                    const UnderLinedTitleWidget(
+                        title: 'Fertilization',
+                        icon: Icons.local_florist_outlined),
                     SizedBox(
                       height: Dimensions.height10,
                     ),
-                    AppRegText(text: sampleText),
+                    AppRegText(text: snapshot['fertilization']),
                     SizedBox(
                       height: Dimensions.height5,
                     ),
-                    const AppMediumText(
-                      text: 'Temprature',
-                      color: AppColors.darkGreyColor,
-                    ),
-                    SizedBox(
-                      height: Dimensions.height10,
-                    ),
-                    AppRegText(text: sampleText),
-                    SizedBox(
-                      height: Dimensions.height5,
-                    ),
-                    const AppMediumText(
-                      text: 'Humidity',
-                      color: AppColors.darkGreyColor,
-                    ),
-                    SizedBox(
-                      height: Dimensions.height10,
-                    ),
-                    AppRegText(text: sampleText),
-                    SizedBox(
-                      height: Dimensions.height5,
-                    ),
-                    const AppMediumText(
-                      text: 'Flowering',
-                      color: AppColors.darkGreyColor,
-                    ),
-                    SizedBox(
-                      height: Dimensions.height10,
-                    ),
-                    AppRegText(text: sampleText),
-                    SizedBox(
-                      height: Dimensions.height5,
-                    ),
-                    const AppMediumText(
-                      text: 'Soil',
-                      color: AppColors.darkGreyColor,
-                    ),
-                    SizedBox(
-                      height: Dimensions.height10,
-                    ),
-                    AppRegText(text: sampleText),
-                    SizedBox(
-                      height: Dimensions.height5,
-                    ),
-                    const AppMediumText(
-                      text: 'Pot size',
-                      color: AppColors.darkGreyColor,
-                    ),
-                    SizedBox(
-                      height: Dimensions.height10,
-                    ),
-                    AppRegText(text: sampleText),
-                    SizedBox(
-                      height: Dimensions.height5,
-                    ),
+                    // More Info Section
+                    snapshot['more'] != null
+                        ? Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const UnderLinedTitleWidget(
+                                  title: 'More Info', icon: Icons.info_outline),
+                              SizedBox(
+                                height: Dimensions.height10,
+                              ),
+                              AppRegText(text: snapshot['more']),
+                            ],
+                          )
+                        : const SizedBox(
+                            height: 0,
+                          ),
                   ],
                 ),
               ),
@@ -188,13 +149,13 @@ class InformationScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const AppMediumText(
-                    text: 'ALOE VERA',
+                  AppMediumText(
+                    text: snapshot['name'],
                     color: Colors.white,
                     isBold: true,
                   ),
                   AppRegText(
-                    text: 'Medicine Plant',
+                    text: 'مرحب',
                     color: AppColors.greyColor,
                   ),
                   Row(
@@ -205,7 +166,7 @@ class InformationScreen extends StatelessWidget {
                         color: Colors.white,
                       ),
                       AppRegText(
-                        text: ' 248 likes',
+                        text: ' ${Random().nextInt(100)} likes',
                         color: Colors.white,
                       )
                     ],

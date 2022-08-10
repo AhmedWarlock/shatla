@@ -1,11 +1,17 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shatla/screens/information_screen.dart';
 import 'package:shatla/utils/colors.dart';
 import 'package:shatla/utils/dimensions.dart';
 import 'package:shatla/widgets/app_icon.dart';
+import 'package:shatla/widgets/app_text.dart';
+
+import '../widgets/underlined_title.dart';
 
 class ProductScreen extends StatelessWidget {
-  const ProductScreen({Key? key}) : super(key: key);
+  const ProductScreen({Key? key, required this.snapshot}) : super(key: key);
+  final QueryDocumentSnapshot snapshot;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +25,9 @@ class ProductScreen extends StatelessWidget {
             child: Container(
               height: Dimensions.productImgHeight,
               width: double.maxFinite,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage("assets/images/product.jpg"),
+                  image: NetworkImage(snapshot['url']),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -61,26 +67,75 @@ class ProductScreen extends StatelessWidget {
                     topLeft: Radius.circular(Dimensions.radius30 * 1.5),
                     topRight: Radius.circular(Dimensions.radius30 * 1.5),
                   ),
-                  color: Colors.white),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Plant Nae",
-                    style: TextStyle(
-                        fontSize: Dimensions.font26,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                    height: Dimensions.height10,
-                  ),
-                  Text(
-                    "Discription",
-                    style: TextStyle(
-                      fontSize: Dimensions.font16,
+                  color: AppColors.greyColor),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          snapshot['name'],
+                          style: TextStyle(
+                              fontSize: Dimensions.font26,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          width: Dimensions.width15,
+                        ),
+                        Text(
+                          snapshot['flowering']
+                              ? '(Flowering)'
+                              : '(Non-Flowering)',
+                          style: TextStyle(
+                              fontSize: Dimensions.font26,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      height: Dimensions.height10,
+                    ),
+                    const UnderLinedTitleWidget(
+                        title: 'Sun Light', icon: Icons.wb_sunny_outlined),
+                    AppRegText(text: snapshot['sunLight']),
+                    SizedBox(
+                      height: Dimensions.height10,
+                    ),
+                    const UnderLinedTitleWidget(
+                        title: 'Irrigation', icon: Icons.water_drop_outlined),
+                    AppRegText(text: snapshot['irrigation']),
+                    SizedBox(
+                      height: Dimensions.height10,
+                    ),
+                    const UnderLinedTitleWidget(
+                        title: 'Fertilization',
+                        icon: Icons.local_florist_outlined),
+                    AppRegText(text: snapshot['fertilization']),
+                    SizedBox(
+                      height: Dimensions.height10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        MaterialButton(
+                          elevation: 0,
+                          color: AppColors.lightGreen,
+                          onPressed: () => Get.to(() => InformationScreen(
+                                snapshot: snapshot,
+                              )),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                  Radius.circular(Dimensions.radius30))),
+                          child: AppRegText(
+                            text: 'Read more',
+                            color: Colors.white,
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
           ),
@@ -95,14 +150,14 @@ class ProductScreen extends StatelessWidget {
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(Dimensions.radius20 * 2),
                 topRight: Radius.circular(Dimensions.radius20 * 2)),
-            color: AppColors.greyColor),
+            color: Colors.white),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Container(
               padding: EdgeInsets.all(Dimensions.height20),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: AppColors.darkGreyColor,
                 borderRadius: BorderRadius.circular(Dimensions.radius20),
               ),
               child: Row(
@@ -141,7 +196,7 @@ class ProductScreen extends StatelessWidget {
                 color: AppColors.lightGreen,
               ),
               child: Text(
-                "\$1 | Add to cart",
+                "\$${snapshot['price']} | Add to cart",
                 style: TextStyle(
                   fontSize: Dimensions.font20,
                 ),

@@ -116,6 +116,7 @@ class FireBaseRepo {
 
   // Sign Out
   Future<void> signOut() async {
+    showLoading();
     await auth.signOut();
     Get.offAllNamed('/login');
   }
@@ -165,6 +166,7 @@ class FireBaseRepo {
       UploadTask uploadTask = ref.putFile(file);
       TaskSnapshot taskSnapshot = await uploadTask;
       return await ref.getDownloadURL();
+      Get.back();
     } catch (e) {
       showSnackBar(
           title: 'Something went Wrong!', message: "Couldn't upload picture");
