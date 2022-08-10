@@ -18,13 +18,14 @@ class CommentView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String url = _authController.profileURL!;
     return Scaffold(
       appBar: AppBar(),
       body: ListView(children: [
         // User Info
         ListTile(
-          leading: const CircleAvatar(
-            backgroundColor: Colors.grey,
+          leading:  CircleAvatar(
+            backgroundImage: NetworkImage(url),
           ),
           title: AppMediumText(
             text: snapshot['user'],
@@ -111,7 +112,8 @@ class CommentView extends StatelessWidget {
                 )),
             IconButton(
                 onPressed: () async {
-                  String userName = await _authController.getUserInfo();
+                  await _authController.getUserInfo();
+                  String userName = _authController.userName!;
                   await _postsController.uploadComment(
                       userName: userName, postID: snapshot.id);
                 },

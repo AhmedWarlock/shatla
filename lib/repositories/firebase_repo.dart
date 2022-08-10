@@ -15,29 +15,15 @@ class FireBaseRepo {
   // Get Current  user id
   Future<String> getUserId() async => auth.currentUser!.uid;
 
-  Future<String> getUserInfo(
-      {bool isName = true, bool isPic = false, bool isEmail = false}) async {
-    final String uID = await getUserId();
-    if (isName) {
-      String userName = await firestoreUserRefrence
-          .doc(uID)
-          .get()
-          .then((snapShot) => snapShot['name']);
-      return userName;
-    } else if (isPic) {
-      String url = await firestoreUserRefrence
-          .doc(uID)
-          .get()
-          .then((snapShot) => snapShot['profileURL']);
-      return url;
-    } else {
-      String email = await firestoreUserRefrence
-          .doc(uID)
-          .get()
-          .then((snapShot) => snapShot['email']);
-      return email;
-    }
-  }
+  Future<Map<String,String>> getUserInfo()async{
+   var snap = await firestore.collection("users").doc(auth.currentUser!.uid).get();
+   var snapshot = snap.data();
+      return {
+    'name' : snapshot!['name'],
+    'email' :snapshot['email'],
+    'url' : snapshot['profileURL'], 
+   };
+  } 
 
   // Sign Up new user
   Future<void> signUp(

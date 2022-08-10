@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../../../controllers/auth_controller.dart';
 import '../../../utils/colors.dart';
 import '../../../utils/dimensions.dart';
 import '../../../widgets/app_text.dart';
 
 class CommentCardWidget extends StatelessWidget {
-  const CommentCardWidget(
+  AuthController authController = Get.find();
+   CommentCardWidget(
       {Key? key,
       required this.userName,
       required this.text,
@@ -17,6 +20,7 @@ class CommentCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String url = authController.profileURL!;
     return Column(
       children: [
         Row(
@@ -28,8 +32,9 @@ class CommentCardWidget extends StatelessWidget {
                     left: Dimensions.width10,
                     bottom: Dimensions.height60,
                     right: Dimensions.width10),
-                child: const CircleAvatar(
-                  backgroundColor: AppColors.darkGreyColor,
+                child: 
+                 CircleAvatar(
+                  backgroundImage: NetworkImage(url),
                 )),
             // Commnet bubble
             Expanded(

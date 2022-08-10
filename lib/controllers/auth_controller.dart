@@ -26,9 +26,13 @@ class AuthController extends GetxController {
   @override
   void onReady() async {
     super.onReady();
-    userName = await getUserInfo();
-    profileURL = await getUserInfo(isName: false, isPic: true);
-    email = await getUserInfo(isName: false, isEmail: true);
+     print("inside");
+    var user = await getUserInfo();
+   
+   
+    userName = user['name'];
+    profileURL = user['url'];
+    email = user['email'];
   }
 
   String setInitialScreen() {
@@ -51,13 +55,10 @@ class AuthController extends GetxController {
 
   Future<void> signOut() async => await fireBaseRepo.signOut();
 
-  Future<String> getUserInfo(
-          {bool isName = true,
-          bool isPic = false,
-          bool isEmail = false}) async =>
-      await fireBaseRepo.getUserInfo(
-          isPic: isPic, isEmail: isEmail, isName: isName);
-
+  Future<Map<String,String>> getUserInfo()async {
+return await fireBaseRepo.getUserInfo();
+  }
+    
   Future<String> uploadProfilePic(
           {required File image}) async {
       return await fireBaseRepo.uploadImageToStorage(childName: "ProfilePics", file: image, isPost: false);

@@ -5,9 +5,21 @@ import 'package:shatla/utils/dimensions.dart';
 import 'package:shatla/widgets/app_text.dart';
 import 'package:get/get.dart';
 
-class NavigationDrawerWidget extends StatelessWidget {
+class NavigationDrawerWidget extends StatefulWidget {
   NavigationDrawerWidget({Key? key}) : super(key: key);
+
+  @override
+  State<NavigationDrawerWidget> createState() => _NavigationDrawerWidgetState();
+}
+
+class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
   AuthController _authController = Get.find();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +33,12 @@ class NavigationDrawerWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildHeader(
-                  url: _authController.profileURL ??
-                      'https://www.maxpixel.net/static/photo/1x/Insta-Instagram-Instagram-Icon-User-3814081.png',
-                  name: _authController.userName ?? 'UserName',
-                  email: _authController.email ?? 'email'),
+                  url: _authController.profileURL! 
+                      ,
+                  name: _authController.userName!,
+                  email: _authController.email!),
               _buildDrawerItem(
+                
                   icon: Icons.home_filled,
                   name: 'Home',
                   onTap: () => Get.offNamed('/main')),
@@ -100,7 +113,7 @@ Widget _buildHeader(
                 ),
                 const SizedBox(height: 4),
                 AppRegText(
-                  text: 'ahmed@gmail.com',
+                  text:email ,
                   color: AppColors.greyColor,
                 ),
               ],

@@ -42,7 +42,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
-          String userName = await _authController.getUserInfo();
+          await _authController.getUserInfo();
+          String userName = _authController.userName!;
           await _postsController.uploadPost(
               image: _file as File,
               imageName: _pathName as String,

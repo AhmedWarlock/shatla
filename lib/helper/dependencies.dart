@@ -9,7 +9,7 @@ import 'package:shatla/repositories/firebase_repo.dart';
 Future<void> init() async {
   await Firebase.initializeApp();
 
-  Get.lazyPut(() => AuthController(fireBaseRepo: FireBaseRepo()), fenix: true);
+  Get.put(AuthController(fireBaseRepo: FireBaseRepo()));
   Get.lazyPut(() => PostsController(fireBaseRepo: FireBaseRepo()), fenix: true);
   Get.lazyPut(() => ProducsController(), fenix: true);
 }
