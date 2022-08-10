@@ -58,7 +58,7 @@ class AppRouter {
     GetPage(name: info, page: () => const InformationScreen()),
     GetPage(name: posts, page: () => const PostsScreen()),
     GetPage(name: comment, page: () => const CommentView()),
-    GetPage(name: addPost, page: () => const AddPostScreen()),
+    GetPage(name: addPost, page: () => AddPostScreen()),
     GetPage(name: addProduct, page: () => const AddProductScreen()),
     GetPage(name: splash, page: () => const SplashScreen()),
     GetPage(name: account, page: () => const AccountScreen()),

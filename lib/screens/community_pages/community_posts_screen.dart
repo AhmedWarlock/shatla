@@ -1,41 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shatla/constants/firebase_consts.dart';
 import 'package:shatla/utils/colors.dart';
 import 'package:shatla/utils/dimensions.dart';
 import 'package:shatla/widgets/app_text.dart';
 import 'package:shatla/widgets/nav_drawer.dart';
 
+import 'components/post_card.dart';
+
 class PostsScreen extends StatelessWidget {
   const PostsScreen({Key? key}) : super(key: key);
-  void _showPicture() {
-    Get.defaultDialog(
-        title: '',
-        radius: Dimensions.radius15,
-        backgroundColor: Colors.transparent,
-        contentPadding: const EdgeInsets.all(0),
-        content: Container(
-          height: 300,
-          width: double.maxFinite - Dimensions.width20,
-          decoration: BoxDecoration(
-              borderRadius:
-                  BorderRadius.all(Radius.circular(Dimensions.radius15)),
-              image: const DecorationImage(
-                  image: AssetImage('assets/images/product.jpg'),
-                  fit: BoxFit.cover)),
-          child: Align(
-            alignment: Alignment.topRight,
-            child: IconButton(
-                onPressed: () => Get.back(),
-                icon: CircleAvatar(
-                  backgroundColor: Colors.grey.withOpacity(0.4),
-                  child: const Icon(
-                    Icons.close,
-                    color: Colors.white,
-                  ),
-                )),
-          ),
-        ));
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,67 +38,30 @@ class PostsScreen extends StatelessWidget {
           )
         ],
       ),
-      body: ListView.builder(
-          itemCount: 7,
-          itemBuilder: (context, i) {
-            // Comment Cards
-            return Container(
-              margin: EdgeInsets.symmetric(
-                  vertical: Dimensions.height5,
-                  horizontal: Dimensions.height10),
-              height: Dimensions.height120 * 2.15,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius:
-                      BorderRadius.all(Radius.circular(Dimensions.radius15))),
-              child: Column(
-                children: [
-                  ListTile(
-                      leading: const CircleAvatar(
-                        backgroundColor: Colors.grey,
-                      ),
-                      title: const AppMediumText(
-                        text: 'UserName',
-                      ),
-                      subtitle: const AppRegText(text: '3 hours ago'),
-                      trailing: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.more_vert_sharp))),
-                  // Picture Container
-                  GestureDetector(
-                    onTap: _showPicture,
-                    child: Container(
-                      height: Dimensions.height120 * 1.1,
-                      decoration: BoxDecoration(
-                          image: const DecorationImage(
-                              image: AssetImage('assets/images/product.jpg'),
-                              fit: BoxFit.cover),
-                          color: AppColors.greyColor,
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(Dimensions.radius15),
-                          )),
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.thumb_up_alt_outlined)),
-                      IconButton(
-                          onPressed: () {
-                            Get.toNamed("/info");
-                          },
-                          icon: const Icon(Icons.comment_outlined)),
-                      IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.bookmark_outline)),
-                    ],
-                  )
-                ],
-              ),
+      body: StreamBuilder(
+        stream: firestore.collection('posts').snapshots(),
+        builder: (context,
+            AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(color: AppColors.lightGreen),
             );
-          }),
+          } else {
+            return ListView.builder(
+              itemCount: snapshot.data!.docs.length,
+              itemBuilder: (context, i) {
+                QueryDocumentSnapshot post = snapshot.data!.docs[i];
+                return PostCardWidget(
+                    likes: post['likes'],
+                    userName: post['user'],
+                    pictureUrl: post['pictureURL'],
+                    profileUrl: 'profileUrl',
+                    text: post['text']);
+              },
+            );
+          }
+        },
+      ),
     );
   }
 }

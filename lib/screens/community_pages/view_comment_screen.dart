@@ -14,11 +14,11 @@ class CommentView extends StatelessWidget {
       appBar: AppBar(),
       body: ListView(children: [
         // User Info
-        const ListTile(
-          leading: CircleAvatar(
+        ListTile(
+          leading: const CircleAvatar(
             backgroundColor: Colors.grey,
           ),
-          title: AppMediumText(
+          title: const AppMediumText(
             text: 'UserName',
           ),
           subtitle: AppRegText(text: '3 hours ago'),
@@ -28,7 +28,7 @@ class CommentView extends StatelessWidget {
           child: Column(
             children: [
               //POST
-              const AppRegText(text: sampleText2),
+              AppRegText(text: sampleText2),
               //Image
               Container(
                 margin: EdgeInsets.symmetric(vertical: Dimensions.height10),
@@ -69,7 +69,7 @@ class CommentView extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const AppMediumText(text: 'User'),
-                          const AppRegText(
+                          AppRegText(
                             text: 'diufghdisughsdihu',
                             color: AppColors.darkGreyColor,
                           ),

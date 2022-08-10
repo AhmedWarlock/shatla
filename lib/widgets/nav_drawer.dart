@@ -85,12 +85,12 @@ Widget _buildHeader() => InkWell(
             SizedBox(width: Dimensions.width10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                AppLargeText(
+              children: [
+                const AppLargeText(
                   text: 'Name',
                   color: AppColors.greyColor,
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 AppRegText(
                   text: 'ahmed@gmail.com',
                   color: AppColors.greyColor,

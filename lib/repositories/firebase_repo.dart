@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:math';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:path/path.dart';
 import 'package:get/get.dart';
@@ -21,6 +22,8 @@ class FireBaseRepo {
       required String password}) async {
     try {
       // Firebase Create User
+      showLoading();
+
       await auth.createUserWithEmailAndPassword(
         email: email,
         password: password,
@@ -39,16 +42,21 @@ class FireBaseRepo {
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
+        Get.back();
         showSnackBar(
             title: 'Error', message: 'The password provided is too weak.');
         print('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
+        Get.back();
+
         showSnackBar(
             title: 'Error',
             message: 'The account already exists for that email.');
         print('The account already exists for that email.');
       }
     } catch (e) {
+      Get.back();
+
       showSnackBar(title: 'Error', message: 'Something went wrong!');
       print(e);
     }
@@ -57,6 +65,8 @@ class FireBaseRepo {
   // Sign In
   Future<void> SignIn({required String email, required String password}) async {
     try {
+      showLoading();
+
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
@@ -64,10 +74,14 @@ class FireBaseRepo {
       Get.offAllNamed('/main');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
+        Get.back();
+
         showSnackBar(title: 'Error', message: 'No user found for that email.');
 
         print('No user found for that email.');
       } else if (e.code == 'wrong-password') {
+        Get.back();
+
         showSnackBar(
             title: 'Error', message: 'Wrong password provided for that user.');
         print('Wrong password provided for that user.');
@@ -81,24 +95,63 @@ class FireBaseRepo {
     Get.offAllNamed('/login');
   }
 
-  Future<void> uploadProfilePic(File image) async {
+  Future<void> uploadProfilePic(
+      {required File image, required String imageName}) async {
     try {
       showLoading();
 
       final uId = await getUserId();
+
       // Upload to storage
-      var name = basename(image.path);
       var random = Random().nextInt(100000);
-      name = '$random$name';
-      Reference storageRef = fireStorage.ref('Profile_images').child(name);
+
+      Reference storageRef =
+          fireStorage.ref('Profile_images').child('$random$imageName');
       await storageRef.putFile(image);
       // Save in FireStore
       String picId = await storageRef.getDownloadURL();
       await firestoreUserRefrence.doc(uId).update({'profileURL': picId});
       Get.offAllNamed('/main');
     } catch (e) {
+      Get.back();
       showSnackBar(
           title: 'Something went Wrong!', message: "Couldn't upload picture");
+      print('=============$e==================');
+    }
+  }
+
+  Future<void> uploadPost({
+    required File image,
+    required String imageName,
+    required String text,
+    required String userName,
+  }) async {
+    try {
+      showLoading();
+
+      final uId = await getUserId();
+
+      // Upload to storage
+      var random = Random().nextInt(100000);
+
+      Reference storageRef =
+          fireStorage.ref('posts').child('$random$imageName');
+      await storageRef.putFile(image);
+      // Save in FireStore
+      String picId = await storageRef.getDownloadURL();
+      await firestore.collection('posts').doc().set({
+        'text': text,
+        'user': userName,
+        'likes': 0,
+        'userID': uId,
+        'pictureURL': picId,
+        'date': Timestamp.now().toDate().toString()
+      });
+      Get.offAllNamed('/posts');
+    } catch (e) {
+      Get.back();
+      showSnackBar(
+          title: 'Something went Wrong!', message: "Couldn't upload post");
       print('=============$e==================');
     }
   }

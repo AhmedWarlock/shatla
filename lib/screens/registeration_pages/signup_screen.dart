@@ -230,14 +230,14 @@ class _SignupScreenState extends State<SignupScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const AppRegText(
+                          AppRegText(
                             text: 'Already have an account? ',
                             color: Colors.white,
                           ),
                           InkWell(
                             onTap: (() =>
                                 Get.offAndToNamed(AppRouter.getLogin())),
-                            child: const AppRegText(
+                            child: AppRegText(
                               text: 'LogIn',
                               color: AppColors.lightGreen,
                             ),

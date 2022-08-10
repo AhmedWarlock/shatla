@@ -48,7 +48,7 @@ class TitlewithMorebtnWidget extends StatelessWidget {
             shape: RoundedRectangleBorder(
                 borderRadius:
                     BorderRadius.all(Radius.circular(Dimensions.radius30))),
-            child: const AppRegText(
+            child: AppRegText(
               text: 'More',
               color: Colors.white,
             ),

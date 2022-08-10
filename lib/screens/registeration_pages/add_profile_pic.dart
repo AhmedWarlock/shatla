@@ -6,6 +6,7 @@ import 'package:shatla/utils/colors.dart';
 import 'package:shatla/utils/sample_text.dart';
 import 'package:shatla/widgets/app_text.dart';
 import 'package:get/get.dart';
+import 'package:path/path.dart';
 
 import '../../utils/dimensions.dart';
 import '../../widgets/show_loading.dart';
@@ -20,6 +21,7 @@ class AddProfilePicture extends StatefulWidget {
 class _AddProfilePictureState extends State<AddProfilePicture> {
   final AuthController _authController = Get.find();
   File? _img;
+  String? _pathName;
   final imagePicker = ImagePicker();
 
   Future<void> _selectImage(ImageSource imageSource) async {
@@ -27,6 +29,7 @@ class _AddProfilePictureState extends State<AddProfilePicture> {
     if (pickedImage != null) {
       setState(() {
         _img = File(pickedImage.path);
+        _pathName = basename(pickedImage.path);
       });
       Get.back();
     }
@@ -100,7 +103,7 @@ class _AddProfilePictureState extends State<AddProfilePicture> {
                                 SizedBox(
                                   height: Dimensions.height10,
                                 ),
-                                const AppRegText(text: 'Gallery'),
+                                AppRegText(text: 'Gallery'),
                               ],
                             ),
                             Column(
@@ -116,7 +119,7 @@ class _AddProfilePictureState extends State<AddProfilePicture> {
                                 SizedBox(
                                   height: Dimensions.height10,
                                 ),
-                                const AppRegText(text: 'Camera'),
+                                AppRegText(text: 'Camera'),
                               ],
                             ),
                           ],
@@ -141,7 +144,9 @@ class _AddProfilePictureState extends State<AddProfilePicture> {
                           borderRadius: BorderRadius.all(
                               Radius.circular(Dimensions.radius15))),
                       onPressed: () async {
-                        await _authController.uploadProfilePic(_img!);
+                        await _authController.uploadProfilePic(
+                            image: _img as File,
+                            imageName: _pathName.toString());
                       },
                       child: const AppMediumText(
                         text: 'Confirm',

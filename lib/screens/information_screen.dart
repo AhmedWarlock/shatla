@@ -79,7 +79,7 @@ class InformationScreen extends StatelessWidget {
                     SizedBox(
                       height: Dimensions.height10,
                     ),
-                    const AppRegText(text: sampleText),
+                    AppRegText(text: sampleText),
                     SizedBox(
                       height: Dimensions.height5,
                     ),
@@ -90,7 +90,7 @@ class InformationScreen extends StatelessWidget {
                     SizedBox(
                       height: Dimensions.height10,
                     ),
-                    const AppRegText(text: sampleText),
+                    AppRegText(text: sampleText),
                     SizedBox(
                       height: Dimensions.height5,
                     ),
@@ -101,7 +101,7 @@ class InformationScreen extends StatelessWidget {
                     SizedBox(
                       height: Dimensions.height10,
                     ),
-                    const AppRegText(text: sampleText),
+                    AppRegText(text: sampleText),
                     SizedBox(
                       height: Dimensions.height5,
                     ),
@@ -112,7 +112,7 @@ class InformationScreen extends StatelessWidget {
                     SizedBox(
                       height: Dimensions.height10,
                     ),
-                    const AppRegText(text: sampleText),
+                    AppRegText(text: sampleText),
                     SizedBox(
                       height: Dimensions.height5,
                     ),
@@ -123,7 +123,7 @@ class InformationScreen extends StatelessWidget {
                     SizedBox(
                       height: Dimensions.height10,
                     ),
-                    const AppRegText(text: sampleText),
+                    AppRegText(text: sampleText),
                     SizedBox(
                       height: Dimensions.height5,
                     ),
@@ -134,7 +134,7 @@ class InformationScreen extends StatelessWidget {
                     SizedBox(
                       height: Dimensions.height10,
                     ),
-                    const AppRegText(text: sampleText),
+                    AppRegText(text: sampleText),
                     SizedBox(
                       height: Dimensions.height5,
                     ),
@@ -145,7 +145,7 @@ class InformationScreen extends StatelessWidget {
                     SizedBox(
                       height: Dimensions.height10,
                     ),
-                    const AppRegText(text: sampleText),
+                    AppRegText(text: sampleText),
                     SizedBox(
                       height: Dimensions.height5,
                     ),
@@ -156,7 +156,7 @@ class InformationScreen extends StatelessWidget {
                     SizedBox(
                       height: Dimensions.height10,
                     ),
-                    const AppRegText(text: sampleText),
+                    AppRegText(text: sampleText),
                     SizedBox(
                       height: Dimensions.height5,
                     ),
@@ -193,14 +193,14 @@ class InformationScreen extends StatelessWidget {
                     color: Colors.white,
                     isBold: true,
                   ),
-                  const AppRegText(
+                  AppRegText(
                     text: 'Medicine Plant',
                     color: AppColors.greyColor,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                      Icon(
+                    children: [
+                      const Icon(
                         Icons.favorite,
                         color: Colors.white,
                       ),
