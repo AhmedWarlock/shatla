@@ -50,7 +50,7 @@ class AppRouter {
     GetPage(name: onboarding, page: () => const OnboardingScreen()),
     GetPage(name: login, page: () => const LoginScreen()),
     GetPage(name: signup, page: () => const SignupScreen()),
-    GetPage(name: home, page: () => const HomeScreen()),
+    GetPage(name: home, page: () =>  HomeScreen()),
     GetPage(name: cart, page: () => const CartScreen()),
     GetPage(name: product, page: () => const ProductScreen()),
     GetPage(name: info, page: () => const InformationScreen()),
