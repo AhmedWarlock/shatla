@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:shatla/repositories/firebase_repo.dart';
 import 'package:shatla/constants/firebase_consts.dart';
@@ -35,13 +36,15 @@ class AuthController extends GetxController {
     email = user['email'];
   }
 
-  String setInitialScreen() {
+  Future<String> setInitialScreen()async {
     bool isLoggedIn = auth.currentUser != null;
+    SharedPreferences pref = await SharedPreferences.getInstance();
     if (isLoggedIn) {
       return '/main';
-    } else {
+    } else if(pref.getBool("showHome") == true) {
       return '/login';
     }
+    else return '/onboarding';
   }
 
   Future<void> signIn() async => await fireBaseRepo.SignIn(
