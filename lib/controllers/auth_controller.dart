@@ -25,7 +25,6 @@ class AuthController extends GetxController {
   @override
   void onReady() async {
     super.onReady();
-    print("inside");
     var user = await getUserInfo();
 
     userName = user['name'];
@@ -40,8 +39,9 @@ class AuthController extends GetxController {
       return '/main';
     } else if (pref.getBool("showHome") == true) {
       return '/login';
-    } else
+    } else {
       return '/onboarding';
+    }
   }
 
   Future<void> signIn() async => await fireBaseRepo.SignIn(

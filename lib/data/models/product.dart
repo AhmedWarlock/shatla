@@ -1,15 +1,13 @@
-import 'dart:convert';
-
 class ProductModel {
-String? id;
-String? price;
-String? name;
-String? fertilization;
-String? flowering;
-String? irrigation;
-String? sellerId;
-String? sunLight;
-String? url;
+  String? id;
+  String? price;
+  String? name;
+  String? fertilization;
+  String? flowering;
+  String? irrigation;
+  String? sellerId;
+  String? sunLight;
+  String? url;
   ProductModel({
     this.id,
     this.price,
@@ -21,7 +19,6 @@ String? url;
     this.sunLight,
     this.url,
   });
-
 
   Map<String, dynamic> toMap() {
     return {
@@ -50,7 +47,4 @@ String? url;
       url: map['url'],
     );
   }
-
-
 }
-

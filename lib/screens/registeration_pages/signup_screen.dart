@@ -22,7 +22,6 @@ class _SignupScreenState extends State<SignupScreen> {
   final AuthController _authController = Get.find();
 
   bool _isObscure = true;
-  bool _isVendor = false;
 
   void _submit() async {
     if (_formKey.currentState!.validate()) {

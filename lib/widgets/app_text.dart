@@ -44,7 +44,7 @@ class _ExpandableTextState extends State<ExpandableText> {
                       text: 'show more',
                       color: AppColors.lightGreen,
                     ),
-                    Icon(Icons.arrow_downward_rounded),
+                    const Icon(Icons.arrow_downward_rounded),
                   ],
                 ),
               )

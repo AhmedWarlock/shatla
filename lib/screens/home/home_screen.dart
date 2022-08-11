@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:shatla/controllers/auth_controller.dart';
 import 'package:shatla/controllers/products_controller.dart';
 import 'package:shatla/data/models/product.dart';
 import 'package:shatla/screens/home/components/title_more_btn.dart';
@@ -14,6 +13,7 @@ import 'components/home_cards.dart';
 import 'components/home_header.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
   List<ProductModel>? floweringProducts;
@@ -29,7 +29,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      drawer: NavigationDrawerWidget(),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add_rounded),
+        onPressed: () => Get.toNamed('add_product'),
+      ),
+      drawer: const NavigationDrawerWidget(),
       body: SingleChildScrollView(
           child: Column(
         children: [

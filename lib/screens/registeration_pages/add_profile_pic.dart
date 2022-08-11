@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field, depend_on_referenced_packages
+
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +12,6 @@ import 'package:get/get.dart';
 import 'package:path/path.dart';
 
 import '../../utils/dimensions.dart';
-import '../../widgets/show_loading.dart';
 
 class AddProfilePicture extends StatefulWidget {
   const AddProfilePicture({Key? key}) : super(key: key);
@@ -145,14 +146,15 @@ class _AddProfilePictureState extends State<AddProfilePicture> {
                           borderRadius: BorderRadius.all(
                               Radius.circular(Dimensions.radius15))),
                       onPressed: () async {
-                        String photoURL = await _authController.uploadProfilePic(
-                            image: _img as File,
-                            );
-                            firestore.collection("users").doc(auth.currentUser!.uid).update({
-                             "profileURL":photoURL
-                            });
-                            Get.offNamed("/login");
-                            
+                        String photoURL =
+                            await _authController.uploadProfilePic(
+                          image: _img as File,
+                        );
+                        firestore
+                            .collection("users")
+                            .doc(auth.currentUser!.uid)
+                            .update({"profileURL": photoURL});
+                        Get.offNamed("/login");
                       },
                       child: const AppMediumText(
                         text: 'Confirm',

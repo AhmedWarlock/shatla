@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shatla/constants/firebase_consts.dart';
@@ -36,9 +35,9 @@ class _AccountScreenState extends State<AccountScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(),
-        drawer:  NavigationDrawerWidget(),
+        drawer: const NavigationDrawerWidget(),
         body: userData!.isEmpty
-            ? Center(
+            ? const Center(
                 child: CircularProgressIndicator(
                 color: AppColors.lightGreen,
               ))
@@ -82,7 +81,7 @@ class _AccountScreenState extends State<AccountScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.logout_sharp,
                             color: AppColors.lightGreen,
                           ),

@@ -11,7 +11,7 @@ import '../../../widgets/app_text.dart';
 class PostCardWidget extends StatelessWidget {
   AuthController authController = Get.find();
 
-   PostCardWidget({
+  PostCardWidget({
     Key? key,
     required this.snapshot,
   }) : super(key: key);
@@ -61,13 +61,14 @@ class PostCardWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ListTile(
-              leading:  CircleAvatar(
+              leading: CircleAvatar(
                 backgroundImage: NetworkImage(url),
               ),
               title: AppMediumText(
                 text: snapshot['user'],
               ),
-              subtitle: AppRegText(text: '3 hours ago'),
+              subtitle: AppRegText(
+                  text: snapshot['date'].toString().substring(0, 10)),
               trailing: IconButton(
                   onPressed: () {}, icon: const Icon(Icons.more_vert_sharp))),
           // Comment Text

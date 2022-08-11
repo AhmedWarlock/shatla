@@ -26,7 +26,6 @@ class ProductsController extends GetxController {
     required this.fireBaseRepo,
   });
 
-  @override
   Stream<QuerySnapshot<Map<String, dynamic>>> getfloweringProducts() {
     return firestore
         .collection(collection)

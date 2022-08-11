@@ -59,7 +59,7 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                       BorderRadius.all(Radius.circular(Dimensions.radius20)),
                   boxShadow: [
                     BoxShadow(
-                        offset: Offset(0, 10),
+                        offset: const Offset(0, 10),
                         blurRadius: Dimensions.height45,
                         color: AppColors.lightGreen.withOpacity(.23))
                   ]),
@@ -77,7 +77,7 @@ class HomeScreenHeaderWidget extends StatelessWidget {
                   ),
                   IconButton(
                       onPressed: () {},
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.search,
                         color: AppColors.lightGreen,
                       ))

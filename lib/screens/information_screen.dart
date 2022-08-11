@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shatla/utils/sample_text.dart';
 import 'package:shatla/widgets/app_text.dart';
 import 'package:shatla/widgets/underlined_title.dart';
 

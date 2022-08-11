@@ -7,13 +7,13 @@ import 'package:shatla/screens/community_pages/community_posts_screen.dart';
 import 'package:shatla/screens/consultation.dart';
 import 'package:shatla/screens/contact_us.dart';
 import 'package:shatla/screens/home/home_screen.dart';
-import 'package:shatla/screens/information_screen.dart';
 import 'package:shatla/screens/onboarding_screen.dart';
-import 'package:shatla/screens/product_screen.dart';
 import 'package:shatla/screens/registeration_pages/add_profile_pic.dart';
 import 'package:shatla/screens/registeration_pages/login_screen.dart';
 import 'package:shatla/screens/registeration_pages/signup_screen.dart';
 import 'package:shatla/screens/splash/splash_screen.dart';
+
+import '../screens/orders.dart';
 
 class AppRouter {
   //routes names
@@ -32,6 +32,7 @@ class AppRouter {
   static const String account = '/account';
   static const String consult = '/consult';
   static const String contact = '/contact';
+  static const String orders = '/orders';
 
 //methods returns routes names
   static String getOnboarding() => onboarding;
@@ -49,6 +50,7 @@ class AppRouter {
   static String getAccount() => account;
   static String getConsult() => consult;
   static String getContact() => contact;
+  static String getOrders() => orders;
 
 //list of GetPages one for each route
   static List<GetPage> routes = [
@@ -61,10 +63,11 @@ class AppRouter {
     // GetPage(name: info, page: () => const InformationScreen()),
     GetPage(name: posts, page: () => const PostsScreen()),
     GetPage(name: addPost, page: () => AddPostScreen()),
-    GetPage(name: addProduct, page: () => AddProductScreen()),
+    GetPage(name: addProduct, page: () => const AddProductScreen()),
     GetPage(name: consult, page: () => const ConsultationScreen()),
     GetPage(name: splash, page: () => const SplashScreen()),
     GetPage(name: account, page: () => const AccountScreen()),
+    GetPage(name: orders, page: () => const MyOrdersScreen()),
     GetPage(name: proPic, page: () => const AddProfilePicture()),
     GetPage(name: contact, page: () => const ContactUsScreen()),
   ];

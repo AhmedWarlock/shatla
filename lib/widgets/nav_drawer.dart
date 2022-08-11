@@ -7,20 +7,14 @@ import 'package:shatla/widgets/app_text.dart';
 import 'package:get/get.dart';
 
 class NavigationDrawerWidget extends StatefulWidget {
-  NavigationDrawerWidget({Key? key}) : super(key: key);
+  const NavigationDrawerWidget({Key? key}) : super(key: key);
 
   @override
   State<NavigationDrawerWidget> createState() => _NavigationDrawerWidgetState();
 }
 
 class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
-  AuthController _authController = Get.find();
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
+  final AuthController _authController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -42,13 +36,13 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                   name: 'Home',
                   onTap: () => Get.offNamed('/main')),
               _buildDrawerItem(
-                  icon: Icons.person,
-                  name: 'Profile',
-                  onTap: () => Get.offNamed('/account')),
-              _buildDrawerItem(
                   icon: Icons.people_alt_sharp,
                   name: 'Community',
                   onTap: () => Get.offNamed('/posts')),
+              _buildDrawerItem(
+                  icon: FontAwesomeIcons.motorcycle,
+                  name: 'My Orders',
+                  onTap: () => Get.offNamed('/orders')),
               _buildDrawerItem(
                   icon: Icons.settings, name: 'Settings', onTap: () {}),
               _buildDrawerItem(

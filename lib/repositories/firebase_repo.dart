@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, unused_local_variable, dead_code
+
 import 'dart:io';
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -57,14 +59,12 @@ class FireBaseRepo {
         Get.back();
         showSnackBar(
             title: 'Error', message: 'The password provided is too weak.');
-        print('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
         Get.back();
 
         showSnackBar(
             title: 'Error',
             message: 'The account already exists for that email.');
-        print('The account already exists for that email.');
       }
     } catch (e) {
       Get.back();
@@ -160,6 +160,7 @@ class FireBaseRepo {
 
       showSnackBar(
           title: 'Something went Wrong!', message: "Couldn't upload picture");
+      // ignore: avoid_print
       print('=============$e==================');
       return "";
     }

@@ -155,7 +155,7 @@ class ProductScreen extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {},
-                    child: Icon(
+                    child: const Icon(
                       Icons.remove,
                       color: AppColors.blackColor,
                     ),
@@ -172,7 +172,7 @@ class ProductScreen extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {},
-                    child: Icon(
+                    child: const Icon(
                       Icons.add,
                       color: AppColors.blackColor,
                     ),
