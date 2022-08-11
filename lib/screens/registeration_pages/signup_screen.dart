@@ -154,62 +154,6 @@ class _SignupScreenState extends State<SignupScreen> {
                           helperText: '',
                         ),
                       ),
-                      // User Type
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          InkWell(
-                            onTap: () => setState(() => _isVendor = false),
-                            child: Container(
-                              width: Dimensions.width150,
-                              height: Dimensions.height50,
-                              decoration: BoxDecoration(
-                                  color: _isVendor
-                                      ? Colors.white
-                                      : AppColors.lightGreen,
-                                  borderRadius: BorderRadius.only(
-                                    topLeft:
-                                        Radius.circular(Dimensions.radius15),
-                                    bottomLeft:
-                                        Radius.circular(Dimensions.radius15),
-                                  )),
-                              child: Center(
-                                child: AppRegText(
-                                  text: 'Customer',
-                                  color: _isVendor
-                                      ? AppColors.darkGreen
-                                      : Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () => setState(() => _isVendor = true),
-                            child: Container(
-                              height: Dimensions.height50,
-                              width: Dimensions.width150,
-                              decoration: BoxDecoration(
-                                  color: _isVendor
-                                      ? AppColors.lightGreen
-                                      : Colors.white,
-                                  borderRadius: BorderRadius.only(
-                                    topRight:
-                                        Radius.circular(Dimensions.radius15),
-                                    bottomRight:
-                                        Radius.circular(Dimensions.radius15),
-                                  )),
-                              child: Center(
-                                child: AppRegText(
-                                  text: 'Vendor',
-                                  color: _isVendor
-                                      ? Colors.white
-                                      : AppColors.darkGreen,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
 
                       // Sign Up button
                       TextButton(

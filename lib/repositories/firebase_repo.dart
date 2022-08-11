@@ -15,15 +15,16 @@ class FireBaseRepo {
   // Get Current  user id
   Future<String> getUserId() async => auth.currentUser!.uid;
 
-  Future<Map<String,String>> getUserInfo()async{
-   var snap = await firestore.collection("users").doc(auth.currentUser!.uid).get();
-   var snapshot = snap.data();
-      return {
-    'name' : snapshot!['name'],
-    'email' :snapshot['email'],
-    'url' : snapshot['profileURL'], 
-   };
-  } 
+  Future<Map<String, String>> getUserInfo() async {
+    var snap =
+        await firestore.collection("users").doc(auth.currentUser!.uid).get();
+    var snapshot = snap.data();
+    return {
+      'name': snapshot!['name'],
+      'email': snapshot['email'],
+      'url': snapshot['profileURL'],
+    };
+  }
 
   // Sign Up new user
   Future<void> signUp(
@@ -146,6 +147,7 @@ class FireBaseRepo {
 
       if (isPost) {
         String id = const Uuid().v1();
+        print('========$id============');
         ref = ref.child(id);
       }
 
@@ -154,10 +156,56 @@ class FireBaseRepo {
       return await ref.getDownloadURL();
       Get.back();
     } catch (e) {
+      Get.back();
+
       showSnackBar(
           title: 'Something went Wrong!', message: "Couldn't upload picture");
       print('=============$e==================');
       return "";
+    }
+  }
+
+  // Upload Product
+  Future<void> uploadProduct({
+    required String productName,
+    required String irrigation,
+    required String fertilization,
+    required String sunLight,
+    required String price,
+    required String quantity,
+    String more = '',
+    required String imageName,
+    required File image,
+    required bool flowering,
+  }) async {
+    try {
+      showLoading();
+      final uId = await getUserId();
+      // Upload to storage
+      var random = Random().nextInt(100000);
+      Reference storageRef =
+          fireStorage.ref('userProducts').child('$random$imageName');
+      await storageRef.putFile(image);
+      String picId = await storageRef.getDownloadURL();
+
+      // Save In fire store
+      await firestore.collection('products').doc().set(({
+            'name': productName,
+            'flowering': flowering,
+            'sellerId': uId,
+            'quantity': quantity,
+            'price': price,
+            'sunLight': sunLight,
+            'url': picId,
+            'fertilization': fertilization,
+            'irrigation': irrigation,
+            'more': more
+          }));
+      Get.toNamed('/main');
+    } catch (e) {
+      Get.back();
+      showSnackBar(title: 'Something went Wrong!', message: "Couldn't upload");
+      print('=============$e==================');
     }
   }
 

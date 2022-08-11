@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shatla/controllers/auth_controller.dart';
 import 'package:shatla/utils/colors.dart';
 import 'package:shatla/utils/dimensions.dart';
@@ -33,12 +34,10 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildHeader(
-                  url: _authController.profileURL! 
-                      ,
+                  url: _authController.profileURL!,
                   name: _authController.userName!,
                   email: _authController.email!),
               _buildDrawerItem(
-                
                   icon: Icons.home_filled,
                   name: 'Home',
                   onTap: () => Get.offNamed('/main')),
@@ -52,6 +51,10 @@ class _NavigationDrawerWidgetState extends State<NavigationDrawerWidget> {
                   onTap: () => Get.offNamed('/posts')),
               _buildDrawerItem(
                   icon: Icons.settings, name: 'Settings', onTap: () {}),
+              _buildDrawerItem(
+                  icon: Icons.book,
+                  name: 'Contact us',
+                  onTap: () => Get.offNamed('/contact')),
               const Spacer(),
               Divider(
                 color: Colors.white,
@@ -113,7 +116,7 @@ Widget _buildHeader(
                 ),
                 const SizedBox(height: 4),
                 AppRegText(
-                  text:email ,
+                  text: email,
                   color: AppColors.greyColor,
                 ),
               ],

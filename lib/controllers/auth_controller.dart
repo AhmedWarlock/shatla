@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -26,24 +25,23 @@ class AuthController extends GetxController {
   @override
   void onReady() async {
     super.onReady();
-     print("inside");
+    print("inside");
     var user = await getUserInfo();
-   
-   
+
     userName = user['name'];
     profileURL = user['url'];
     email = user['email'];
   }
 
-  Future<String> setInitialScreen()async {
+  Future<String> setInitialScreen() async {
     bool isLoggedIn = auth.currentUser != null;
     SharedPreferences pref = await SharedPreferences.getInstance();
     if (isLoggedIn) {
       return '/main';
-    } else if(pref.getBool("showHome") == true) {
+    } else if (pref.getBool("showHome") == true) {
       return '/login';
-    }
-    else return '/onboarding';
+    } else
+      return '/onboarding';
   }
 
   Future<void> signIn() async => await fireBaseRepo.SignIn(
@@ -57,14 +55,15 @@ class AuthController extends GetxController {
 
   Future<void> signOut() async => await fireBaseRepo.signOut();
 
-  Future<Map<String,String>> getUserInfo()async {
-return await fireBaseRepo.getUserInfo();
+  Future<Map<String, String>> getUserInfo() async {
+    return await fireBaseRepo.getUserInfo();
   }
-    
-  Future<String> uploadProfilePic(
-          {required File image}) async {
-      return await fireBaseRepo.uploadImageToStorage(childName: "ProfilePics", file: image, isPost: false);
-          }
+
+  Future<String> uploadProfilePic({required File image}) async {
+    return await fireBaseRepo.uploadImageToStorage(
+        childName: "ProfilePics", file: image, isPost: false);
+  }
+
   // Clear text Controller
   void _clearControllers() {
     emailController.clear();

@@ -154,10 +154,6 @@ class InformationScreen extends StatelessWidget {
                     color: Colors.white,
                     isBold: true,
                   ),
-                  AppRegText(
-                    text: 'مرحب',
-                    color: AppColors.greyColor,
-                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [

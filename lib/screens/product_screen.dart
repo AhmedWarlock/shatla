@@ -72,29 +72,20 @@ class ProductScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                      children: [
-                        Text(
-                          snapshot['name'],
-                          style: TextStyle(
-                              fontSize: Dimensions.font26,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(
-                          width: Dimensions.width15,
-                        ),
-                        Text(
-                          snapshot['flowering']
-                              ? '(Flowering)'
-                              : '(Non-Flowering)',
-                          style: TextStyle(
-                              fontSize: Dimensions.font26,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                    Text(
+                      '${snapshot['name']}',
+                      style: TextStyle(
+                          fontSize: Dimensions.font26,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      snapshot['flowering'] ? '(Flowering)' : '(Non-Flowering)',
+                      style: TextStyle(
+                          fontSize: Dimensions.font26,
+                          fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      height: Dimensions.height10,
+                      height: Dimensions.height20,
                     ),
                     const UnderLinedTitleWidget(
                         title: 'Sun Light', icon: Icons.wb_sunny_outlined),

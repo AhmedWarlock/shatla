@@ -23,12 +23,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  @override
-  void initState() {
-    
-    super.initState();
-    AuthController authController = Get.find();
-  }
+  final ProductsController _productsController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
           // Recommeded Cards
           StreamBuilder(
-              stream: ProducsController().getfloweringProducts(),
+              stream: _productsController.getfloweringProducts(),
               builder: (context,
                   AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
@@ -100,7 +95,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           image: '${snap["url"]}',
                           title: '${snap["name"]}',
                           subtitle: 'flowering',
-                          onPress: () => Get.to(ProductScreen(snapshot: snap)),
+                          onPress: () =>
+                              Get.to(() => ProductScreen(snapshot: snap)),
                           price: '${snap["price"]}',
                           size: 0.4,
                         );
@@ -121,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
             height: Dimensions.height10,
           ),
           StreamBuilder(
-              stream: ProducsController().getNonfloweringProducts(),
+              stream: _productsController.getNonfloweringProducts(),
               builder: (context,
                   AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
@@ -143,7 +139,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           image: '${snap["url"]}',
                           title: '${snap["name"]}',
                           subtitle: 'non-flowering',
-                          onPress: () => Get.to(ProductScreen(snapshot: snap)),
+                          onPress: () =>
+                              Get.to(() => ProductScreen(snapshot: snap)),
                           price: '${snap["price"]}',
                           size: 0.4,
                         );
