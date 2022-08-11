@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shatla/controllers/auth_controller.dart';
 import 'package:shatla/screens/community_pages/view_comment_screen.dart';
 
 import '../../../utils/colors.dart';
@@ -8,7 +9,9 @@ import '../../../utils/dimensions.dart';
 import '../../../widgets/app_text.dart';
 
 class PostCardWidget extends StatelessWidget {
-  const PostCardWidget({
+  AuthController authController = Get.find();
+
+   PostCardWidget({
     Key? key,
     required this.snapshot,
   }) : super(key: key);
@@ -46,6 +49,7 @@ class PostCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String url = authController.profileURL!;
     return Container(
       margin: EdgeInsets.symmetric(
           vertical: Dimensions.height5, horizontal: Dimensions.height10),
@@ -57,8 +61,8 @@ class PostCardWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ListTile(
-              leading: const CircleAvatar(
-                backgroundColor: Colors.grey,
+              leading:  CircleAvatar(
+                backgroundImage: NetworkImage(url),
               ),
               title: AppMediumText(
                 text: snapshot['user'],

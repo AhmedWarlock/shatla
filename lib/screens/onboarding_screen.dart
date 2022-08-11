@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shatla/utils/colors.dart';
 import 'package:shatla/utils/dimensions.dart';
 import 'package:shatla/widgets/onboarding_page.dart';
@@ -56,8 +58,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       bottomSheet: isLastPage
           ? GestureDetector(
               onTap: () async {
-                // SharedPreferences pref = await SharedPreferences.getInstance();
-                // pref.setBool("showHome", true);
+                SharedPreferences pref = await SharedPreferences.getInstance();
+                pref.setBool("showHome", true);
+                Get.offNamed("/login");
               },
               child: Container(
                 margin: EdgeInsets.symmetric(

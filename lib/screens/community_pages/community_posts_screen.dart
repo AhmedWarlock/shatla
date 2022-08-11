@@ -48,6 +48,7 @@ class PostsScreen extends StatelessWidget {
             );
           } else {
             return ListView.builder(
+              
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, i) {
                 QueryDocumentSnapshot post = snapshot.data!.docs[i];

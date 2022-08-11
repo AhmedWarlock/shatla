@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:shatla/repositories/firebase_repo.dart';
 import 'package:shatla/constants/firebase_consts.dart';
@@ -25,18 +26,24 @@ class AuthController extends GetxController {
   @override
   void onReady() async {
     super.onReady();
-    userName = await getUserInfo();
-    profileURL = await getUserInfo(isName: false, isPic: true);
-    email = await getUserInfo(isName: false, isEmail: true);
+     print("inside");
+    var user = await getUserInfo();
+   
+   
+    userName = user['name'];
+    profileURL = user['url'];
+    email = user['email'];
   }
 
-  String setInitialScreen() {
+  Future<String> setInitialScreen()async {
     bool isLoggedIn = auth.currentUser != null;
+    SharedPreferences pref = await SharedPreferences.getInstance();
     if (isLoggedIn) {
       return '/main';
-    } else {
+    } else if(pref.getBool("showHome") == true) {
       return '/login';
     }
+    else return '/onboarding';
   }
 
   Future<void> signIn() async => await fireBaseRepo.SignIn(
@@ -50,13 +57,10 @@ class AuthController extends GetxController {
 
   Future<void> signOut() async => await fireBaseRepo.signOut();
 
-  Future<String> getUserInfo(
-          {bool isName = true,
-          bool isPic = false,
-          bool isEmail = false}) async =>
-      await fireBaseRepo.getUserInfo(
-          isPic: isPic, isEmail: isEmail, isName: isName);
-
+  Future<Map<String,String>> getUserInfo()async {
+return await fireBaseRepo.getUserInfo();
+  }
+    
   Future<String> uploadProfilePic(
           {required File image}) async {
       return await fireBaseRepo.uploadImageToStorage(childName: "ProfilePics", file: image, isPost: false);

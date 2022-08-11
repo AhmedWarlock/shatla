@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shatla/controllers/auth_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shatla/controllers/posts_controller.dart';
@@ -8,8 +9,10 @@ import 'package:shatla/repositories/firebase_repo.dart';
 
 Future<void> init() async {
   await Firebase.initializeApp();
+   final sharedPreferences = await SharedPreferences.getInstance();
+  Get.lazyPut(() => sharedPreferences);
 
-  Get.lazyPut(() => AuthController(fireBaseRepo: FireBaseRepo()), fenix: true);
+  Get.put(AuthController(fireBaseRepo: FireBaseRepo()));
   Get.lazyPut(() => PostsController(fireBaseRepo: FireBaseRepo()), fenix: true);
   Get.lazyPut(() => ProducsController(), fenix: true);
 }

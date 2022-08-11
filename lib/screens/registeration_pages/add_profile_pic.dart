@@ -149,7 +149,7 @@ class _AddProfilePictureState extends State<AddProfilePicture> {
                             image: _img as File,
                             );
                             firestore.collection("users").doc(auth.currentUser!.uid).update({
-                             "photoURL":photoURL
+                             "profileURL":photoURL
                             });
                             Get.offNamed("/login");
                             
