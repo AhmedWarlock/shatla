@@ -7,12 +7,13 @@ import 'package:shatla/controllers/posts_controller.dart';
 import 'package:shatla/utils/colors.dart';
 import 'package:shatla/utils/dimensions.dart';
 import 'package:get/get.dart';
+// ignore: depend_on_referenced_packages
 import 'package:path/path.dart';
 
 import '../../widgets/app_text.dart';
 
 class AddPostScreen extends StatefulWidget {
-  AddPostScreen({Key? key}) : super(key: key);
+  const AddPostScreen({Key? key}) : super(key: key);
 
   @override
   State<AddPostScreen> createState() => _AddPostScreenState();

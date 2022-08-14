@@ -70,7 +70,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 height: Dimensions.loginContainerHeight,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: AppColors.greenColor,
+                  color: AppColors.lightGreen,
                   borderRadius: BorderRadius.circular(Dimensions.height15),
                 ),
                 child: Center(
@@ -97,7 +97,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       child: Text(
                         "SKIP",
                         style: TextStyle(
-                            color: AppColors.greenColor,
+                            color: AppColors.lightGreen,
                             fontSize: Dimensions.font16 * 1.2,
                             fontWeight: FontWeight.bold),
                       )),
@@ -108,7 +108,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         effect: SwapEffect(
                           spacing: Dimensions.height15,
                           dotColor: AppColors.greyColor,
-                          activeDotColor: AppColors.greenColor,
+                          activeDotColor: AppColors.lightGreen,
                         ),
                         onDotClicked: (index) {
                           controller.animateToPage(index,
@@ -125,7 +125,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       child: Text(
                         "NEXT",
                         style: TextStyle(
-                            color: AppColors.greenColor,
+                            color: AppColors.lightGreen,
                             fontSize: Dimensions.font16 * 1.2,
                             fontWeight: FontWeight.bold),
                       )),

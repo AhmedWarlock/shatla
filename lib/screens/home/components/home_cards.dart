@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:marquee/marquee.dart';
 import '../../../utils/colors.dart';
 import '../../../utils/dimensions.dart';
 import '../../../widgets/app_text.dart';
@@ -11,7 +11,7 @@ class HomeItemCardsWidget extends StatelessWidget {
     required this.onPress,
     required this.title,
     required this.subtitle,
-    this.price,
+    required this.price,
     required this.size,
   }) : super(key: key);
 
@@ -19,7 +19,7 @@ class HomeItemCardsWidget extends StatelessWidget {
   final Function() onPress;
   final String title;
   final String subtitle;
-  final price;
+  final String price;
   final double size;
 
   @override
@@ -56,18 +56,25 @@ class HomeItemCardsWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                RichText(
-                    text: TextSpan(children: [
-                  TextSpan(
-                      text: '$title\n',
-                      style: TextStyle(
-                          fontSize: Dimensions.font16, color: Colors.black)),
-                  TextSpan(
-                      text: subtitle,
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  title.length <= 11
+                      ? AppRegText(text: title)
+                      : SizedBox(
+                          width: Dimensions.width60 * 2 - 1,
+                          height: Dimensions.height20,
+                          child: Marquee(
+                            pauseAfterRound: const Duration(milliseconds: 1500),
+                            velocity: 25,
+                            blankSpace: Dimensions.width20,
+                            text: title,
+                            style: TextStyle(fontSize: Dimensions.font16),
+                          ),
+                        ),
+                  Text(subtitle,
                       style: TextStyle(
                           fontSize: Dimensions.font12,
                           color: AppColors.darkGreyColor))
-                ])),
+                ]),
                 AppRegText(
                   text: '\$$price',
                   color: AppColors.lightGreen,

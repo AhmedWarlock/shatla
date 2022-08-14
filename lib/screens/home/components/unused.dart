@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shatla/screens/home/components/home_header.dart';
 import 'package:shatla/utils/colors.dart';
 import 'package:shatla/utils/dimensions.dart';
 import 'package:shatla/widgets/app_buttons.dart';

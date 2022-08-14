@@ -15,7 +15,7 @@ class PostsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: NavigationDrawerWidget(),
+      drawer: const NavigationDrawerWidget(),
       backgroundColor: AppColors.greyColor,
       appBar: AppBar(
         actions: [
@@ -48,7 +48,6 @@ class PostsScreen extends StatelessWidget {
             );
           } else {
             return ListView.builder(
-              
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, i) {
                 QueryDocumentSnapshot post = snapshot.data!.docs[i];

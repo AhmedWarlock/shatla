@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shatla/controllers/auth_controller.dart';
 
 import 'package:shatla/utils/dimensions.dart';

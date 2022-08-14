@@ -24,13 +24,13 @@ class CommentView extends StatelessWidget {
       body: ListView(children: [
         // User Info
         ListTile(
-          leading:  CircleAvatar(
+          leading: CircleAvatar(
             backgroundImage: NetworkImage(url),
           ),
           title: AppMediumText(
             text: snapshot['user'],
           ),
-          subtitle: AppRegText(text: '3 hours ago'),
+          subtitle: const AppRegText(text: '3 hours ago'),
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: Dimensions.width10),

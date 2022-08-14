@@ -44,10 +44,10 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<void> signIn() async => await fireBaseRepo.SignIn(
+  Future<void> signIn() async => await fireBaseRepo.signIn(
       email: emailController.text, password: passwordController.text);
 
-  Future<void> signUp() async => fireBaseRepo.signUp(
+  Future<void> signUp() async => await fireBaseRepo.signUp(
       name: nameController.text,
       phoneNum: phoneNumberController.text,
       email: emailController.text,
@@ -65,7 +65,7 @@ class AuthController extends GetxController {
   }
 
   // Clear text Controller
-  void _clearControllers() {
+  void clearControllers() {
     emailController.clear();
     passwordController.clear();
     nameController.clear();

@@ -18,7 +18,6 @@ class _AccountScreenState extends State<AccountScreen> {
   Map<String, dynamic>? userData = {};
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     getUser();
   }

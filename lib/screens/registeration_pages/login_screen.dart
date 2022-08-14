@@ -136,12 +136,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      AppRegText(
+                      const AppRegText(
                           text: 'Don\'t have an account?. ',
                           color: Colors.white),
                       InkWell(
                         onTap: (() => Get.offAndToNamed(AppRouter.getSignup())),
-                        child: AppRegText(
+                        child: const AppRegText(
                             text: 'Sign up', color: AppColors.lightGreen),
                       ),
                     ],

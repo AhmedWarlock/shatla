@@ -13,7 +13,7 @@ class ContactUsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      drawer: NavigationDrawerWidget(),
+      drawer: const NavigationDrawerWidget(),
       body: SafeArea(
           child: Row(
         children: [
@@ -46,7 +46,7 @@ class ContactUsScreen extends StatelessWidget {
                     SizedBox(
                       width: Dimensions.width10,
                     ),
-                    AppRegText(text: 'shatla_app@shatla.info')
+                    const AppRegText(text: 'shatla_app@shatla.info')
                   ],
                 ),
                 SizedBox(
@@ -58,7 +58,7 @@ class ContactUsScreen extends StatelessWidget {
                     SizedBox(
                       width: Dimensions.width10,
                     ),
-                    AppRegText(text: '+249 999422212')
+                    const AppRegText(text: '+249 999422212')
                   ],
                 ),
                 SizedBox(
@@ -70,7 +70,7 @@ class ContactUsScreen extends StatelessWidget {
                     SizedBox(
                       width: Dimensions.width10,
                     ),
-                    AppRegText(text: 'ShatlaApp')
+                    const AppRegText(text: 'ShatlaApp')
                   ],
                 ),
                 SizedBox(
@@ -82,7 +82,7 @@ class ContactUsScreen extends StatelessWidget {
                     SizedBox(
                       width: Dimensions.width10,
                     ),
-                    AppRegText(text: '@ShatlaApp')
+                    const AppRegText(text: '@ShatlaApp')
                   ],
                 ),
                 SizedBox(
@@ -94,7 +94,8 @@ class ContactUsScreen extends StatelessWidget {
                     SizedBox(
                       width: Dimensions.width10,
                     ),
-                    AppRegText(text: 'Savannah Innovation\n Labs, Khartoum')
+                    const AppRegText(
+                        text: 'Savannah Innovation\n Labs, Khartoum')
                   ],
                 ),
                 SizedBox(

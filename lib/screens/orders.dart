@@ -32,7 +32,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
               AppMediumText(text: 'x2'),
             ],
           ),
-          AppRegText(
+          const AppRegText(
             text: '2022-07-12',
             color: AppColors.darkGreyColor,
           ),
@@ -84,7 +84,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
               AppMediumText(text: 'x1'),
             ],
           ),
-          AppRegText(
+          const AppRegText(
             text: '2022-06-20',
             color: AppColors.darkGreyColor,
           ),
@@ -137,7 +137,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
               AppMediumText(text: 'x4'),
             ],
           ),
-          AppRegText(
+          const AppRegText(
             text: '2021-12-03',
             color: AppColors.darkGreyColor,
           ),
@@ -190,7 +190,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
               AppMediumText(text: 'x5'),
             ],
           ),
-          AppRegText(
+          const AppRegText(
             text: '2021-10-16',
             color: AppColors.darkGreyColor,
           ),

@@ -9,7 +9,7 @@ import '../../../utils/dimensions.dart';
 import '../../../widgets/app_text.dart';
 
 class PostCardWidget extends StatelessWidget {
-  AuthController authController = Get.find();
+  final AuthController authController = Get.find();
 
   PostCardWidget({
     Key? key,

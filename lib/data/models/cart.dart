@@ -1,5 +1,3 @@
-import 'package:shatla/data/models/product.dart';
-
 class CartModel {
   int? id;
   String? name;

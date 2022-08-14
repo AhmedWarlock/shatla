@@ -105,7 +105,7 @@ class _AddProfilePictureState extends State<AddProfilePicture> {
                                 SizedBox(
                                   height: Dimensions.height10,
                                 ),
-                                AppRegText(text: 'Gallery'),
+                                const AppRegText(text: 'Gallery'),
                               ],
                             ),
                             Column(
@@ -121,7 +121,7 @@ class _AddProfilePictureState extends State<AddProfilePicture> {
                                 SizedBox(
                                   height: Dimensions.height10,
                                 ),
-                                AppRegText(text: 'Camera'),
+                                const AppRegText(text: 'Camera'),
                               ],
                             ),
                           ],

@@ -39,12 +39,12 @@ class _ExpandableTextState extends State<ExpandableText> {
                   _flag = !_flag;
                 }),
                 child: Row(
-                  children: [
+                  children: const [
                     AppRegText(
                       text: 'show more',
                       color: AppColors.lightGreen,
                     ),
-                    const Icon(Icons.arrow_downward_rounded),
+                    Icon(Icons.arrow_downward_rounded),
                   ],
                 ),
               )
@@ -106,7 +106,7 @@ class AppLargeText extends StatelessWidget {
 }
 
 class AppRegText extends StatelessWidget {
-  AppRegText(
+  const AppRegText(
       {Key? key,
       required this.text,
       this.isBold = false,
@@ -118,7 +118,7 @@ class AppRegText extends StatelessWidget {
   final Color color;
   final double? size;
   final bool isBold;
-  int? maxLines;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {

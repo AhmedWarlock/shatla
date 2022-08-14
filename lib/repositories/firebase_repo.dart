@@ -75,7 +75,7 @@ class FireBaseRepo {
   }
 
   // Sign In
-  Future<void> SignIn({required String email, required String password}) async {
+  Future<void> signIn({required String email, required String password}) async {
     try {
       showLoading();
 
@@ -160,7 +160,6 @@ class FireBaseRepo {
 
       showSnackBar(
           title: 'Something went Wrong!', message: "Couldn't upload picture");
-      // ignore: avoid_print
       print('=============$e==================');
       return "";
     }
