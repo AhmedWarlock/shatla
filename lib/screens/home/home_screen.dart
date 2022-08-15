@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shatla/controllers/products_controller.dart';
 import 'package:shatla/data/models/product.dart';
 import 'package:shatla/screens/home/components/title_more_btn.dart';
+import 'package:shatla/screens/home/product_grid.dart';
 import 'package:shatla/screens/product_screen.dart';
 import 'package:shatla/utils/colors.dart';
 import 'package:shatla/widgets/app_text.dart';
@@ -66,14 +67,6 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(
             height: Dimensions.height10,
           ),
-          // Recommended Title
-          TitlewithMorebtnWidget(
-            title: 'Flowering ',
-            onMoreTap: () {},
-          ),
-          SizedBox(
-            height: Dimensions.height10,
-          ),
 
           // Recommeded Cards
           StreamBuilder(
@@ -87,39 +80,48 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 } else {
-                  return SizedBox(
-                    height: Dimensions.height200 * 1.1,
-                    width: double.maxFinite,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: snapshot.data!.docs.length,
-                      itemBuilder: (context, i) {
-                        QueryDocumentSnapshot snap = snapshot.data!.docs[i];
-                        return HomeItemCardsWidget(
-                          image: '${snap["url"]}',
-                          title: '${snap["name"]}',
-                          subtitle: 'flowering',
-                          onPress: () =>
-                              Get.to(() => ProductScreen(snapshot: snap)),
-                          price: '${snap["price"]}',
-                          size: 0.4,
-                        );
-                      },
-                    ),
+                  return Column(
+                    children: [
+                      // Recommended Title
+                      TitlewithMorebtnWidget(
+                        title: 'Flowering ',
+                        onMoreTap: () => Get.to(() => ProductGrid(
+                              snapshots: snapshot.data!.docs,
+                            )),
+                      ),
+                      SizedBox(
+                        height: Dimensions.height10,
+                      ),
+                      SizedBox(
+                        height: Dimensions.height200 * 1.1,
+                        width: double.maxFinite,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: snapshot.data!.docs.length,
+                          itemBuilder: (context, i) {
+                            QueryDocumentSnapshot snap = snapshot.data!.docs[i];
+                            return HomeItemCardsWidget(
+                              image: '${snap["url"]}',
+                              title: '${snap["name"]}',
+                              subtitle: 'flowering',
+                              onPress: () =>
+                                  Get.to(() => ProductScreen(snapshot: snap)),
+                              price: '${snap["price"]}',
+                              size: 0.4,
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   );
                 }
               }),
           //  Featured Plants
+
           SizedBox(
             height: Dimensions.height10,
           ),
-          SizedBox(
-            height: Dimensions.height10,
-          ),
-          TitlewithMorebtnWidget(title: 'Non Flowering', onMoreTap: () {}),
-          SizedBox(
-            height: Dimensions.height10,
-          ),
+
           StreamBuilder(
               stream: _productsController.getNonfloweringProducts(),
               builder: (context,
@@ -131,25 +133,36 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 } else {
-                  return SizedBox(
-                    height: Dimensions.height200 * 1.1,
-                    width: double.maxFinite,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: snapshot.data!.docs.length,
-                      itemBuilder: (context, i) {
-                        QueryDocumentSnapshot snap = snapshot.data!.docs[i];
-                        return HomeItemCardsWidget(
-                          image: '${snap["url"]}',
-                          title: '${snap["name"]}',
-                          subtitle: 'non-flowering',
-                          onPress: () =>
-                              Get.to(() => ProductScreen(snapshot: snap)),
-                          price: '${snap["price"]}',
-                          size: 0.4,
-                        );
-                      },
-                    ),
+                  return Column(
+                    children: [
+                      TitlewithMorebtnWidget(
+                          title: 'Non Flowering',
+                          onMoreTap: () => Get.to(() =>
+                              ProductGrid(snapshots: snapshot.data!.docs))),
+                      SizedBox(
+                        height: Dimensions.height10,
+                      ),
+                      SizedBox(
+                        height: Dimensions.height200 * 1.1,
+                        width: double.maxFinite,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: snapshot.data!.docs.length,
+                          itemBuilder: (context, i) {
+                            QueryDocumentSnapshot snap = snapshot.data!.docs[i];
+                            return HomeItemCardsWidget(
+                              image: '${snap["url"]}',
+                              title: '${snap["name"]}',
+                              subtitle: 'non-flowering',
+                              onPress: () =>
+                                  Get.to(() => ProductScreen(snapshot: snap)),
+                              price: '${snap["price"]}',
+                              size: 0.4,
+                            );
+                          },
+                        ),
+                      ),
+                    ],
                   );
                 }
               }),

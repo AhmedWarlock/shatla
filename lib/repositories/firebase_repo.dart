@@ -18,8 +18,8 @@ class FireBaseRepo {
   Future<String> getUserId() async => auth.currentUser!.uid;
 
   Future<Map<String, String>> getUserInfo() async {
-    var snap =
-        await firestore.collection("users").doc(auth.currentUser!.uid).get();
+    final String uid = await getUserId();
+    var snap = await firestore.collection("users").doc(uid).get();
     var snapshot = snap.data();
     return {
       'name': snapshot!['name'],
