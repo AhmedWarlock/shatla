@@ -38,7 +38,7 @@ class CommentCardWidget extends StatelessWidget {
             // Commnet bubble
             Expanded(
               child: Container(
-                height: Dimensions.height120 * 0.86,
+                height: Dimensions.height120,
                 padding: EdgeInsets.symmetric(
                     horizontal: Dimensions.width10,
                     vertical: Dimensions.width5),

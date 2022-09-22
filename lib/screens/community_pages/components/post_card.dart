@@ -67,8 +67,7 @@ class PostCardWidget extends StatelessWidget {
               title: AppMediumText(
                 text: snapshot['user'],
               ),
-              subtitle: AppRegText(
-                  text: snapshot['date'].toString().substring(0, 10)),
+              subtitle: AppRegText(text: snapshot['date'].toString()),
               trailing: IconButton(
                   onPressed: () {}, icon: const Icon(Icons.more_vert_sharp))),
           // Comment Text

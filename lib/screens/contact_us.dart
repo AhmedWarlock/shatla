@@ -46,11 +46,11 @@ class ContactUsScreen extends StatelessWidget {
                     SizedBox(
                       width: Dimensions.width10,
                     ),
-                    const AppRegText(text: 'shatla_app@shatla.info')
+                    const AppRegText(text: 'shatla_app\n@shatla.info')
                   ],
                 ),
                 SizedBox(
-                  height: Dimensions.height10,
+                  height: Dimensions.height15,
                 ),
                 Row(
                   children: [
@@ -62,7 +62,7 @@ class ContactUsScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: Dimensions.height10,
+                  height: Dimensions.height15,
                 ),
                 Row(
                   children: [
@@ -74,7 +74,7 @@ class ContactUsScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: Dimensions.height10,
+                  height: Dimensions.height15,
                 ),
                 Row(
                   children: [
@@ -86,7 +86,7 @@ class ContactUsScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: Dimensions.height10,
+                  height: Dimensions.height15,
                 ),
                 Row(
                   children: [
@@ -95,7 +95,7 @@ class ContactUsScreen extends StatelessWidget {
                       width: Dimensions.width10,
                     ),
                     const AppRegText(
-                        text: 'Savannah Innovation\n Labs, Khartoum')
+                        text: 'Savannah\n Innovation\n Labs, Khartoum')
                   ],
                 ),
                 SizedBox(
