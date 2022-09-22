@@ -61,7 +61,7 @@ class ProductGrid extends StatelessWidget {
               height: Dimensions.height250 * 2.25,
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    mainAxisSpacing: Dimensions.height10, crossAxisCount: 2),
+                    mainAxisSpacing: Dimensions.height50, crossAxisCount: 2),
                 itemCount: snapshots.length,
                 itemBuilder: (context, i) {
                   QueryDocumentSnapshot snap = snapshots[i];
@@ -71,7 +71,7 @@ class ProductGrid extends StatelessWidget {
                     subtitle: 'flowering',
                     onPress: () => Get.to(() => ProductScreen(snapshot: snap)),
                     price: '${snap["price"]}',
-                    size: 0.5,
+                    size: 0.6,
                   );
                 },
               ),

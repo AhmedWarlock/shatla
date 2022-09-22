@@ -91,7 +91,7 @@ class ProductScreen extends StatelessWidget {
                     ),
                     const UnderLinedTitleWidget(
                         title: 'Sun Light', icon: Icons.wb_sunny_outlined),
-                    AppRegText(text: snapshot['sunLight']),
+                    AppRegText(text: snapshot['sunlight']),
                     SizedBox(
                       height: Dimensions.height10,
                     ),
@@ -137,7 +137,7 @@ class ProductScreen extends StatelessWidget {
 
       //add to cart
       bottomNavigationBar: Container(
-        padding: EdgeInsets.symmetric(horizontal: Dimensions.height15 * 2),
+        padding: EdgeInsets.symmetric(horizontal: Dimensions.height15),
         height: Dimensions.bottomHeightBar,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.only(

@@ -81,7 +81,7 @@ class InformationScreen extends StatelessWidget {
                     SizedBox(
                       height: Dimensions.height10,
                     ),
-                    AppRegText(text: snapshot['sunLight']),
+                    AppRegText(text: snapshot['sunlight']),
                     SizedBox(
                       height: Dimensions.height5,
                     ),

@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               onPress: () =>
                                   Get.to(() => ProductScreen(snapshot: snap)),
                               price: '${snap["price"]}',
-                              size: 0.4,
+                              size: 0.43,
                             );
                           },
                         ),
@@ -157,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               onPress: () =>
                                   Get.to(() => ProductScreen(snapshot: snap)),
                               price: '${snap["price"]}',
-                              size: 0.4,
+                              size: 0.43,
                             );
                           },
                         ),
